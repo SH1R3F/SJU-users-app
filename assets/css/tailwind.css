@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.form {
+	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md;
+}
+h5 {
+	@apply text-xl;
+}
+h4 {
+	@apply text-2xl;
+}
+label {
+	@apply inline-block mb-2;
+}
+input:not([type="radio"]):not([type="checkbox"]) {
+	@apply block w-full border py-2 px-3 outline-none rounded-sm text-sm focus:border-sju-400;
+}
+.btn {
+	@apply py-1.5 px-3 rounded-sm transition shadow-sm;
+}
+.btn-primary {
+	@apply bg-sju-200 hover:bg-sju-50 text-white btn;
+}
+select {
+	@apply block w-full border py-1 px-3 outline-none rounded-sm text-sm focus:border-sju-400;
+}
+.row-of-two {
+	@apply grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4;
+}
+.input-group {
+	@apply flex flex-row-reverse rtl:flex-row;
+}
+.input-group > input {
+	@apply sm:w-10/12 md:w-11/12 border-l-0 rounded-l-none focus:border-gray-100;
+}
+.input-group > .prepend {
+	@apply sm:w-2/12 md:w-1/12 text-center py-2 px-3 text-sm border border-r-0;
+}
