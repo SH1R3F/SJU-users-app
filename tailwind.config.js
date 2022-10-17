@@ -9,6 +9,7 @@ module.exports = {
 		`plugins/**/*.{js,ts}`,
 		`App.{js,ts,vue}`,
 		`app.{js,ts,vue}`,
+		`error.{js,ts,vue}`,
 		"./node_modules/flowbite/**/*.js",
 	],
 	theme: {

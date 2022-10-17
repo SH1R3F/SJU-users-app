@@ -1,4 +1,8 @@
 {
 	"Saudi journalists association": "هيئة الصحفيين السعوديين",
-	"Loading": "جاري التحميل"
+	"Loading": "جاري التحميل",
+	"Error": "خطأ",
+	"Sorry, we couldn't find this page.": "نأسف، لم يتم العثور على هذه الصفحة",
+	"But dont worry, you can find plenty of other things on our homepage.": "لكن لا تقلق، يمكنك العثور على صفحات أخرى في صفحتنا الرئيسية",
+	"Back to homepage": "العودة للصفحة الرئيسية"
 }

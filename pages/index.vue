@@ -1091,21 +1091,23 @@
 
 	// Slider configuration
 	if (process.client) {
-		const items = [
-			{
-				position: 0,
-				el: document.getElementById("carousel-item-1"),
-			},
-			{
-				position: 1,
-				el: document.getElementById("carousel-item-2"),
-			},
-		]
+		if (document.getElementById("default-carousel")) {
+			const items = [
+				{
+					position: 0,
+					el: document.getElementById("carousel-item-1"),
+				},
+				{
+					position: 1,
+					el: document.getElementById("carousel-item-2"),
+				},
+			]
 
-		const carousel = new Carousel(items, {
-			interval: 6000,
-		})
-		setTimeout(() => carousel.cycle(), 6000)
+			const carousel = new Carousel(items, {
+				interval: 6000,
+			})
+			setTimeout(() => carousel.cycle(), 6000)
+		}
 	}
 </script>
 
