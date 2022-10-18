@@ -5,16 +5,24 @@
 			<div class="container px-2">
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 					<div>
-						<h5 class="text-xl mb-3">روابط تهمك:</h5>
+						<h5 class="text-xl mb-3">{{ $t("Important Links") }}</h5>
 						<ul>
-							<li><a href="http://www.media.gov.sa/">وزارة الإعلام</a></li>
-							<li><a href="http://www.gcam.gov.sa/ar/Pages/default.aspx">هيئة المرئي والمسموع</a></li>
-							<li><a href="http://www.spa.gov.sa/">وكالة الأنباء السعودية</a></li>
-							<li><a href="http://www.spa.gov.sa/">هيئة الإذاعة والتلفزيون</a></li>
+							<li>
+								<a href="http://www.media.gov.sa/">{{ $t("Ministry of Information") }}</a>
+							</li>
+							<li>
+								<a href="http://www.gcam.gov.sa/ar/Pages/default.aspx">{{ $t("Audiovisual organization") }}</a>
+							</li>
+							<li>
+								<a href="http://www.spa.gov.sa/">{{ $t("Saudi press agency") }}</a>
+							</li>
+							<li>
+								<a href="http://www.spa.gov.sa/">{{ $t("Radio & TV organization") }}</a>
+							</li>
 						</ul>
 					</div>
 					<div>
-						<h5 class="text-xl mb-3">تواصل معنا</h5>
+						<h5 class="text-xl mb-3">{{ $t("Contact us") }}</h5>
 						<ul>
 							<li class="flex gap-3 mb-3">
 								<svg xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.351" viewBox="0 0 22.351 22.351">
@@ -207,7 +215,7 @@
 						</ul>
 					</div>
 					<div>
-						<h5 class="text-xl mb-3">موقعنا:</h5>
+						<h5 class="text-xl mb-3">{{ $t("Our location") }}:</h5>
 						<iframe
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1023.7624475266713!2d46.631574088726786!3d24.794504080179525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2ee39d45930e57%3A0xb06fc0fbbbe7d2f3!2z2YfZitim2Kkg2KfZhNi12K3ZgdmK2YrZhiDYp9mE2LPYudmI2K_ZitmK2YY!5e0!3m2!1sar!2ssa!4v1542227466291"
 							frameborder="0"
@@ -216,7 +224,7 @@
 						></iframe>
 					</div>
 					<div>
-						<h5 class="text-xl mb-3">تابعنا</h5>
+						<h5 class="text-xl mb-3">{{ $t("Follow us") }}</h5>
 						<div class="mb-4">
 							<nuxt-link class="text-3xl mr-3 rtl:ml-3 rtl:mr-0">
 								<gg-facebook class="inline" />
@@ -244,20 +252,20 @@
 					<div>
 						<ul class="flex gap-3 mb-1.5">
 							<li class="text-xs text-gray-600">
-								<a href="https://sju.org.sa/page-faq.html">شروط الخدمة</a>
+								<a href="https://sju.org.sa/page-faq.html">{{ $t("Terms of service") }}</a>
 							</li>
 							<li class="text-xs text-gray-600">
-								<a href="https://sju.org.sa/sitemap.html">سياسة الخصوصية</a>
+								<a href="https://sju.org.sa/sitemap.html">{{ $t("Privacy policy") }}</a>
 							</li>
 							<li class="text-xs text-gray-600">
-								<a href="https://sju.org.sa/contact-us.html">اتصل بنا</a>
+								<a href="https://sju.org.sa/contact-us.html">{{ $t("Call us") }}</a>
 							</li>
 						</ul>
-						<span class="text-xs text-gray-600">جميع الحقوق محفوظة لهيئة الصحفيين السعوديين</span>
+						<span class="text-xs text-gray-600">{{ $t("All rights reserved to Saudi Journalists Association") }}</span>
 					</div>
 
 					<div>
-						<img src="https://sju.org.sa/assets/themes/new/images/logo.png" alt="هيئة الصحفيين السعوديين" class="max-h-20" />
+						<img src="https://sju.org.sa/assets/themes/new/images/logo.png" :alt="$t('All rights reserved to Saudi Journalists Association')" class="max-h-20" />
 					</div>
 				</div>
 			</div>

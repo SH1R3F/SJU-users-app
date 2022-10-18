@@ -49,33 +49,14 @@
 </template>
 
 <script setup>
-	import { useI18n } from "vue-i18n"
 	import GgFacebook from "~icons/gg/facebook"
 	import MdiTwitter from "~icons/mdi/twitter"
 	import MdiLinkedin from "~icons/mdi/linkedin"
 
-	const i18n = useI18n()
 	const changeLocale = (locale) => {
-		// Change local & Update locale cookie
-		i18n.locale.value = locale
+		// Change locale cookie & reload
 		const localeCookie = useCookie("locale")
 		localeCookie.value = locale
-
-		// Change rtl
-		useHead({
-			htmlAttrs: {
-				dir: locale == "ar" ? "rtl" : "ltr",
-				lang: locale,
-			},
-			bodyAttrs: {
-				class: locale == "ar" ? "rtl" : "ltr",
-			},
-		})
-
-		// Hide dropdown
-		const targetEl = document.getElementById("dropdown")
-		const triggerEl = document.getElementById("dropperdown")
-		const dropdown = new Dropdown(targetEl, triggerEl)
-		dropdown.hide()
+		window.location.reload(true)
 	}
 </script>

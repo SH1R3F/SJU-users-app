@@ -20,32 +20,10 @@
 			</button>
 			<div class="hidden w-full lg:block" id="navbar-default">
 				<ul class="flex flex-col justify-between overflow-hidden p-4 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:text-sm lg:font-medium lg:border-0">
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">الرئيسية</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">الأخبار</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">عن الهيئة</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">ميثاق الشرف </a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">العضوية في الهيئة</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">اللوائح والأنظمة</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">الصحافة</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">الإذاعة والتلفاز</a>
-					</li>
-					<li>
-						<a href="#" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400">شراكات</a>
+					<li v-for="menu in menus" :key="menu.id">
+						<nuxt-link :to="menu.link" class="block py-2 pr-4 pl-3 text-white lg:p-0 hover:text-sju-400" :target="menu.open_in_same_page ? '_self' : '_blank'">
+							{{ dblocalize(menu, "title") }}
+						</nuxt-link>
 					</li>
 				</ul>
 			</div>
@@ -53,3 +31,10 @@
 	</nav>
 	<!-- Navbar -->
 </template>
+
+<script setup>
+	const { apiFetch } = useApiFetch()
+	const { menus = [] } = await apiFetch("/menus")
+
+	const { dblocalize } = useLocalization()
+</script>

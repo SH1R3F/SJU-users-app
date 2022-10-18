@@ -41,7 +41,7 @@
 								></path>
 							</g>
 						</svg>
-						<span class="font-bold text-white">تسجيل دخول</span>
+						<span class="font-bold text-white">{{ $t("login") }}</span>
 					</label>
 					<!-- Login button, Modal trigger -->
 				</div>
@@ -56,7 +56,7 @@
 				<div class="modal-box relative bg-white rounded-lg shadow">
 					<!-- Modal header -->
 					<div class="flex justify-between items-start p-4 rounded-t border-b">
-						<h3 class="text-xl font-medium text-gray-900">دخول للهيئة</h3>
+						<h3 class="text-xl font-medium text-gray-900">{{ $t("Login to sju") }}</h3>
 						<button
 							type="button"
 							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center"
@@ -69,7 +69,7 @@
 									clip-rule="evenodd"
 								></path>
 							</svg>
-							<span class="sr-only">Close modal</span>
+							<span class="sr-only">{{ $t("Close modal") }}</span>
 						</button>
 					</div>
 
@@ -77,7 +77,7 @@
 					<div class="flex flex-col md:flex-row justify-center space-x-3 rtl:space-x-reverse px-3 py-7">
 						<!-- Trainees -->
 						<div class="flex-1 py-16 text-center border rounded-md">
-							<div class="text-2xl pb-8">المتدربين</div>
+							<div class="text-2xl pb-8">{{ $t("Subscribers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/users/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -88,7 +88,7 @@
 
 						<!-- Members -->
 						<div class="flex-1 py-16 text-center border rounded-md bg-sju-300">
-							<div class="text-2xl pb-8 text-white">الأعضاء</div>
+							<div class="text-2xl pb-8 text-white">{{ $t("Members") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/members/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -99,7 +99,7 @@
 
 						<!-- Volunteers -->
 						<div class="flex-1 py-16 text-center border rounded-md">
-							<div class="text-2xl pb-8">المتطوعون</div>
+							<div class="text-2xl pb-8">{{ $t("Volunteers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/volunteers/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -117,7 +117,7 @@
 							type="button"
 							class="text-gray-500 bg-white hover:bg-gray-100 hover:shadow-md rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900"
 						>
-							إغلاق
+							{{ $t("Close") }}
 						</button>
 					</div>
 				</div>

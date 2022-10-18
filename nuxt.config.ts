@@ -6,11 +6,20 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		// secret serverside variables
 		public: {
-			// Public clientside variables
+			baseURL: "http://127.0.0.1:8000/api/",
+			baseUrl: "http://127.0.0.1:8000/api/",
 		},
 	},
 	css: ["~/assets/fonts/droidkufi/droidarabickufi.css"],
-	modules: ["@nuxtjs/tailwindcss"],
+	modules: [
+		"@nuxtjs/tailwindcss",
+		[
+			"@pinia/nuxt",
+			{
+				autoImports: ["defineStore"],
+			},
+		],
+	],
 	plugins: [
 		// Both server and client sides plugins
 		"~/plugins/i18n.ts",
