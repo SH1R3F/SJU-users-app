@@ -12,7 +12,7 @@
 
 					<!-- Regulations -->
 					<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-						<div class="bg-sju-500 py-9 px-4 text-center" v-for="i in 3">
+						<div class="bg-sju-500 py-9 px-4 text-center dark:bg-sjud-100" v-for="i in 3">
 							<svg xmlns="http://www.w3.org/2000/svg" width="84.001" height="83.183" viewBox="0 0 84.001 83.183" class="mx-auto">
 								<g id="paper_1_" data-name="paper (1)" transform="translate(0 -2.493)">
 									<path
@@ -83,7 +83,7 @@
 								<span class="font-bold text-4xl block">{{ new Date(event.date).getDay() }}</span>
 								{{ $t(new Date(event.date).toLocaleString("default", { month: "long" })) }}
 							</div>
-							<h6 class="text-sju-50 bg-sju-500 flex-grow p-4 flex items-center">
+							<h6 class="text-sju-50 bg-sju-500 flex-grow p-4 flex items-center dark:bg-sjud-100">
 								<!-- To be worked on upon events register page creation -->
 								<a href="https://sju.org.sa/events/register/416">{{ dblocalize(event, "name") }}</a>
 							</h6>

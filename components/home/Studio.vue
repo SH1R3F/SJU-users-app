@@ -1,5 +1,5 @@
 <template>
-	<section class="py-20 bg-sju-500">
+	<section class="py-20 bg-sju-500 dark:bg-sjud-100">
 		<div class="container">
 			<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $t("Studio") }}</h2>
 
@@ -8,21 +8,21 @@
 				<li
 					@click.prevnet="filter = 'all'"
 					:class="{ active: filter == 'all' }"
-					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-sju-50 [&.active]:bg-gray-200 transition"
+					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
 					<a>{{ $t("All") }}</a>
 				</li>
 				<li
 					@click.prevnet="filter = 'photo'"
 					:class="{ active: filter == 'photo' }"
-					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-sju-50 [&.active]:bg-gray-200 transition"
+					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
 					<a>{{ $t("Photos") }}</a>
 				</li>
 				<li
 					@click.prevnet="filter = 'video'"
 					:class="{ active: filter == 'video' }"
-					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-sju-50 [&.active]:bg-gray-200 transition"
+					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
 					<a>{{ $t("Videos") }}</a>
 				</li>

@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 
 export const useHomeStore = defineStore("homeStore", {
 	state: () => ({
+		darkMode: useCookie("darkMode").value || false,
 		mediacenter: [],
 		studio: [],
 		events: [],
@@ -16,6 +17,18 @@ export const useHomeStore = defineStore("homeStore", {
 			this.studio = studio
 			this.events = events
 			this.stats = stats
+		},
+		toggleDarkMode() {
+			this.darkMode = !this.darkMode
+			useCookie("darkMode").value = this.darkMode
+
+			// Update body classes
+			const locale = useCookie("locale").value || "ar"
+			useHead({
+				bodyAttrs: {
+					class: `${locale == "ar" ? "rtl" : "ltr"} ${this.darkMode ? "dark" : ""} [&.dark]:bg-sjud-500`,
+				},
+			})
 		},
 	},
 })

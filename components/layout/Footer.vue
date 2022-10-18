@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- Footer -->
-		<footer class="bg-sju-600 py-8 text-white">
+		<footer class="bg-sju-600 py-8 text-white dark:bg-sjud-50">
 			<div class="container px-2">
 				<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
 					<div>
@@ -246,22 +246,22 @@
 		<!-- Footer -->
 
 		<!-- Footer Bar -->
-		<div class="bg-sju-500 py-2">
+		<div class="bg-sju-500 py-2 text-gray-600 dark:bg-sjud-100 dark:text-gray-400">
 			<div class="container">
 				<div class="flex justify-between items-center">
 					<div>
 						<ul class="flex gap-3 mb-1.5">
-							<li class="text-xs text-gray-600">
+							<li class="text-xs">
 								<a href="https://sju.org.sa/page-faq.html">{{ $t("Terms of service") }}</a>
 							</li>
-							<li class="text-xs text-gray-600">
+							<li class="text-xs">
 								<a href="https://sju.org.sa/sitemap.html">{{ $t("Privacy policy") }}</a>
 							</li>
-							<li class="text-xs text-gray-600">
+							<li class="text-xs">
 								<a href="https://sju.org.sa/contact-us.html">{{ $t("Call us") }}</a>
 							</li>
 						</ul>
-						<span class="text-xs text-gray-600">{{ $t("All rights reserved to Saudi Journalists Association") }}</span>
+						<span class="text-xs">{{ $t("All rights reserved to Saudi Journalists Association") }}</span>
 					</div>
 
 					<div>

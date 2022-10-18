@@ -1,5 +1,5 @@
 <template>
-	<section class="py-20 bg-sju-500">
+	<section class="py-20 bg-sju-500 dark:bg-sjud-100">
 		<!-- Container -->
 		<div class="container">
 			<div class="flex justify-between items-center">

@@ -3,6 +3,14 @@
 	<div class="bg-sju-50 py-1">
 		<div class="container">
 			<ul class="flex justify-end items-center text-white text-sm">
+				<li class="mx-1 hover:text-sju-100 transition cursor-pointer" @click="homeStore.toggleDarkMode()">
+					<template v-if="homeStore.darkMode">
+						<material-symbols-sunny-outline />
+					</template>
+					<template v-else>
+						<ri-moon-fill />
+					</template>
+				</li>
 				<li class="mx-1 hover:text-sju-100 transition">
 					<a href="#">
 						<gg-facebook />
@@ -25,7 +33,7 @@
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
 						</svg>
 					</span>
-					<ul id="dropdown" class="hidden z-10 text-black w-44 bg-white rounded-md shadow">
+					<ul id="dropdown" class="hidden z-10 text-black w-44 bg-white rounded-md shadow dark:bg-sjud-500 dark:text-gray-200">
 						<li
 							@click="changeLocale('ar')"
 							class="cursor-pointer py-1 px-3 hover:bg-sju-100 hover:text-white [&.active]:bg-sju-100 [&.active]:text-white"
@@ -52,6 +60,12 @@
 	import GgFacebook from "~icons/gg/facebook"
 	import MdiTwitter from "~icons/mdi/twitter"
 	import MdiLinkedin from "~icons/mdi/linkedin"
+	import RiMoonFill from "~icons/ri/moon-fill"
+	import MaterialSymbolsSunnyOutline from "~icons/material-symbols/sunny-outline"
+	import { useHomeStore } from "~/stores/homeStore"
+
+	const homeStore = useHomeStore()
+	console.log()
 
 	const changeLocale = (locale) => {
 		// Change locale cookie & reload

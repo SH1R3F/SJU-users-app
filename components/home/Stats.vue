@@ -298,5 +298,4 @@
 
 <script setup>
 	const { stats } = defineProps(["stats"])
-	console.log(stats)
 </script>

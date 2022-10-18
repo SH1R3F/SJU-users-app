@@ -53,13 +53,13 @@
 		<div id="loginModal" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
 			<div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
 				<!-- Modal content -->
-				<div class="modal-box relative bg-white rounded-lg shadow">
+				<div class="modal-box relative bg-white rounded-lg shadow dark:bg-sjud-100">
 					<!-- Modal header -->
-					<div class="flex justify-between items-start p-4 rounded-t border-b">
-						<h3 class="text-xl font-medium text-gray-900">{{ $t("Login to sju") }}</h3>
+					<div class="flex justify-between items-start p-4 rounded-t border-b dark:border-sjud-500">
+						<h3 class="text-xl font-medium text-gray-900 dark:text-gray-200">{{ $t("Login to sju") }}</h3>
 						<button
 							type="button"
-							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center"
+							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-sjud-200"
 							data-modal-toggle="loginModal"
 						>
 							<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -76,18 +76,18 @@
 					<!-- Modal body -->
 					<div class="flex flex-col md:flex-row justify-center space-x-3 rtl:space-x-reverse px-3 py-7">
 						<!-- Trainees -->
-						<div class="flex-1 py-16 text-center border rounded-md">
+						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $t("Subscribers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/users/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
 							<a class="block px-4" href="https://sju.org.sa/users/register">
-								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl">تسجيل جديد</button>
+								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200">تسجيل جديد</button>
 							</a>
 						</div>
 
 						<!-- Members -->
-						<div class="flex-1 py-16 text-center border rounded-md bg-sju-300">
+						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50">
 							<div class="text-2xl pb-8 text-white">{{ $t("Members") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/members/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
@@ -98,24 +98,24 @@
 						</div>
 
 						<!-- Volunteers -->
-						<div class="flex-1 py-16 text-center border rounded-md">
+						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $t("Volunteers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/volunteers/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
 							<a class="block px-4" href="https://sju.org.sa/volunteers/register">
-								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl">تسجيل جديد</button>
+								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200">تسجيل جديد</button>
 							</a>
 						</div>
 					</div>
 					<!-- Modal Body -->
 
 					<!-- Modal footer -->
-					<div class="flex items-center justify-end p-3 rounded-b border-t border-gray-200">
+					<div class="flex items-center justify-end p-3 rounded-b border-t border-gray-200 dark:border-sjud-500">
 						<button
 							data-modal-toggle="loginModal"
 							type="button"
-							class="text-gray-500 bg-white hover:bg-gray-100 hover:shadow-md rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900"
+							class="text-gray-500 bg-white hover:bg-gray-100 hover:shadow-md rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-sjud-200 dark:text-gray-300 dark:border-sjud-500"
 						>
 							{{ $t("Close") }}
 						</button>
