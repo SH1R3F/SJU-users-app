@@ -1,7 +1,7 @@
 <template>
 	<section class="py-20">
 		<div class="container px-2">
-			<h2 class="text-sju-50 text-3xl py-4 mb-4">{{ $t("Statistics") }}</h2>
+			<h2 class="text-sju-50 text-3xl py-4 mb-4">{{ $translate("Statistics") }}</h2>
 
 			<div class="grid grid-cols-2 md:grid-cols-4 gap-y-12">
 				<div class="text-center">
@@ -99,7 +99,7 @@
 						</g>
 					</svg>
 					<h3 class="text-sju-50 font-bold text-3xl mt-1">{{ stats.members }}</h3>
-					<span class="text-sju-50">{{ $t("Of members") }}</span>
+					<span class="text-sju-50">{{ $translate("Of members") }}</span>
 				</div>
 
 				<div class="text-center">
@@ -173,7 +173,7 @@
 						</g>
 					</svg>
 					<h3 class="text-sju-50 font-bold text-3xl mt-1">{{ stats.memberships }}</h3>
-					<span class="text-sju-50">{{ $t("Of memberships") }}</span>
+					<span class="text-sju-50">{{ $translate("Of memberships") }}</span>
 				</div>
 
 				<div class="text-center">
@@ -211,7 +211,7 @@
 						</g>
 					</svg>
 					<h3 class="text-sju-50 font-bold text-3xl mt-1">{{ stats.events }}</h3>
-					<span class="text-sju-50">{{ $t("Of events") }}</span>
+					<span class="text-sju-50">{{ $translate("Of events") }}</span>
 				</div>
 
 				<div class="text-center">
@@ -289,7 +289,7 @@
 						</g>
 					</svg>
 					<h3 class="text-sju-50 font-bold text-3xl mt-1">{{ stats.workshops }}</h3>
-					<span class="text-sju-50">{{ $t("Of workshops") }}</span>
+					<span class="text-sju-50">{{ $translate("Of workshops") }}</span>
 				</div>
 			</div>
 		</div>

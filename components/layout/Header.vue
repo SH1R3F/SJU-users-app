@@ -41,7 +41,7 @@
 								></path>
 							</g>
 						</svg>
-						<span class="font-bold text-white">{{ $t("login") }}</span>
+						<span class="font-bold text-white">{{ $translate("login") }}</span>
 					</label>
 					<!-- Login button, Modal trigger -->
 				</div>
@@ -56,7 +56,7 @@
 				<div class="modal-box relative bg-white rounded-lg shadow dark:bg-sjud-100">
 					<!-- Modal header -->
 					<div class="flex justify-between items-start p-4 rounded-t border-b dark:border-sjud-500">
-						<h3 class="text-xl font-medium text-gray-900 dark:text-gray-200">{{ $t("Login to sju") }}</h3>
+						<h3 class="text-xl font-medium text-gray-900 dark:text-gray-200">{{ $translate("Login to sju") }}</h3>
 						<button
 							type="button"
 							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-sjud-200"
@@ -69,7 +69,7 @@
 									clip-rule="evenodd"
 								></path>
 							</svg>
-							<span class="sr-only">{{ $t("Close modal") }}</span>
+							<span class="sr-only">{{ $translate("Close modal") }}</span>
 						</button>
 					</div>
 
@@ -77,7 +77,7 @@
 					<div class="flex flex-col md:flex-row justify-center space-x-3 rtl:space-x-reverse px-3 py-7">
 						<!-- Trainees -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
-							<div class="text-2xl pb-8">{{ $t("Subscribers") }}</div>
+							<div class="text-2xl pb-8">{{ $translate("Subscribers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/users/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -88,7 +88,7 @@
 
 						<!-- Members -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50">
-							<div class="text-2xl pb-8 text-white">{{ $t("Members") }}</div>
+							<div class="text-2xl pb-8 text-white">{{ $translate("Members") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/members/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -99,7 +99,7 @@
 
 						<!-- Volunteers -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
-							<div class="text-2xl pb-8">{{ $t("Volunteers") }}</div>
+							<div class="text-2xl pb-8">{{ $translate("Volunteers") }}</div>
 							<a class="block px-4 mb-2" href="https://sju.org.sa/volunteers/login">
 								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
 							</a>
@@ -117,7 +117,7 @@
 							type="button"
 							class="text-gray-500 bg-white hover:bg-gray-100 hover:shadow-md rounded-md border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 dark:bg-sjud-200 dark:text-gray-300 dark:border-sjud-500"
 						>
-							{{ $t("Close") }}
+							{{ $translate("Close") }}
 						</button>
 					</div>
 				</div>

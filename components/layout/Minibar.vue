@@ -34,18 +34,10 @@
 						</svg>
 					</span>
 					<ul id="dropdown" class="hidden z-10 text-black w-44 bg-white rounded-md shadow dark:bg-sjud-500 dark:text-gray-200">
-						<li
-							@click="changeLocale('ar')"
-							class="cursor-pointer py-1 px-3 hover:bg-sju-100 hover:text-white [&.active]:bg-sju-100 [&.active]:text-white"
-							:class="{ active: $i18n.locale === 'ar' }"
-						>
+						<li @click="changeLocale('ar')" class="cursor-pointer py-1 px-3 hover:bg-sju-100 hover:text-white [&.active]:bg-sju-100 [&.active]:text-white">
 							<a>العربية</a>
 						</li>
-						<li
-							@click="changeLocale('en')"
-							class="cursor-pointer py-1 px-3 hover:bg-sju-100 hover:text-white [&.active]:bg-sju-100 [&.active]:text-white"
-							:class="{ active: $i18n.locale === 'en' }"
-						>
+						<li @click="changeLocale('en')" class="cursor-pointer py-1 px-3 hover:bg-sju-100 hover:text-white [&.active]:bg-sju-100 [&.active]:text-white">
 							<a>English</a>
 						</li>
 					</ul>
@@ -65,7 +57,6 @@
 	import { useHomeStore } from "~/stores/homeStore"
 
 	const homeStore = useHomeStore()
-	console.log()
 
 	const changeLocale = (locale) => {
 		// Change locale cookie & reload

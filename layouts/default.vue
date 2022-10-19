@@ -1,8 +1,6 @@
 <template>
 	<div>
-		<client-only>
-			<layout-loading v-if="loading" />
-		</client-only>
+		<layout-loading v-show="loading" />
 		<NuxtLoadingIndicator />
 		<layout-minibar />
 		<layout-header />
@@ -19,28 +17,29 @@
 </style>
 
 <script setup>
-	import { useI18n } from "vue-i18n"
 	import { useHomeStore } from "~/stores/homeStore"
-	const loading = ref(true)
 
+	const { $i18n } = useNuxtApp()
+
+	const loading = ref(true)
 	if (process.client) {
 		loading.value = false
 	}
 
-	const locale = useCookie("locale").value || "ar"
+	const locale = $i18n.locale
 	const darkmode = useHomeStore().darkMode
 
 	useHead({
-		title: useI18n().t("Saudi journalists association"),
-		titleTemplate: `%s - ${useI18n().t("Saudi journalists association")}`,
+		title: $i18n.translate("Saudi journalists association"),
+		titleTemplate: `%s - ${$i18n.translate("Saudi journalists association")}`,
 		meta: [
 			{
 				name: "keywords",
-				content: useI18n().t("Saudi journalists association"),
+				content: $i18n.translate("Saudi journalists association"),
 			},
 			{
 				name: "description",
-				content: useI18n().t("Saudi journalists association"),
+				content: $i18n.translate("Saudi journalists association"),
 			},
 		],
 		htmlAttrs: {

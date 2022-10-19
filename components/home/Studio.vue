@@ -1,7 +1,7 @@
 <template>
 	<section class="py-20 bg-sju-500 dark:bg-sjud-100">
 		<div class="container">
-			<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $t("Studio") }}</h2>
+			<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $translate("Studio") }}</h2>
 
 			<!-- Nav Pills -->
 			<ul class="w-full flex">
@@ -10,21 +10,21 @@
 					:class="{ active: filter == 'all' }"
 					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
-					<a>{{ $t("All") }}</a>
+					<a>{{ $translate("All") }}</a>
 				</li>
 				<li
 					@click.prevnet="filter = 'photo'"
 					:class="{ active: filter == 'photo' }"
 					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 border-l hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
-					<a>{{ $t("Photos") }}</a>
+					<a>{{ $translate("Photos") }}</a>
 				</li>
 				<li
 					@click.prevnet="filter = 'video'"
 					:class="{ active: filter == 'video' }"
 					class="cursor-pointer flex-1 text-center text-gray-500 text-sm border-b py-4 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:border-sjud-300 dark:hover:bg-sjud-300"
 				>
-					<a>{{ $t("Videos") }}</a>
+					<a>{{ $translate("Videos") }}</a>
 				</li>
 			</ul>
 			<!-- Nav Pills -->
@@ -39,7 +39,7 @@
 						:style="`background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)), url('${item.file ? item.file : item.link}'); background-size: 100% 100%;`"
 					>
 						<div>
-							<a class="text-white bg-sju-50 text-xs py-2 px-3"> {{ $t(item.type) }} </a>
+							<a class="text-white bg-sju-50 text-xs py-2 px-3"> {{ $translate(item.type) }} </a>
 						</div>
 					</div>
 					<div v-else>

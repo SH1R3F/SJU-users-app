@@ -5,8 +5,8 @@
 				<div class="md:w-7/12">
 					<!-- Section title -->
 					<div class="flex justify-between items-center">
-						<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $t("Regulations and events") }}</h2>
-						<a href="#" class="text-sju-50 text-sm">{{ $t("More") }}</a>
+						<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $translate("Regulations and events") }}</h2>
+						<a href="#" class="text-sju-50 text-sm">{{ $translate("More") }}</a>
 					</div>
 					<!-- Section title -->
 
@@ -60,8 +60,8 @@
 								</g>
 							</svg>
 							<!-- To be worked on upon creating pages -->
-							<a href="#" class="text-sju-50 pt-3 font-bold block text-sm">{{ $t("The basic bylaw of the Saudi Journalists Association") }}</a>
-							<span class="text-xs mt-2 text-sju-50" dir="auto">{{ $t("1.5 Miga bytes") }}</span>
+							<a href="#" class="text-sju-50 pt-3 font-bold block text-sm">{{ $translate("The basic bylaw of the Saudi Journalists Association") }}</a>
+							<span class="text-xs mt-2 text-sju-50" dir="auto">{{ $translate("1.5 Miga bytes") }}</span>
 						</div>
 					</div>
 					<!-- Regulations -->
@@ -70,8 +70,8 @@
 				<div class="md:w-5/12">
 					<!-- Section title -->
 					<div class="flex justify-between items-center">
-						<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $t("Events") }}</h2>
-						<a href="#" class="text-sju-50 text-sm">{{ $t("More") }}</a>
+						<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $translate("Events") }}</h2>
+						<a href="#" class="text-sju-50 text-sm">{{ $translate("More") }}</a>
 					</div>
 					<!-- Section title -->
 
@@ -81,7 +81,7 @@
 						<div class="flex" v-for="event in events">
 							<div class="bg-sju-50 text-white text-center flex-grow-0 py-5 px-10 w-28 flex justify-center items-center flex-col">
 								<span class="font-bold text-4xl block">{{ new Date(event.date).getDay() }}</span>
-								{{ $t(new Date(event.date).toLocaleString("default", { month: "long" })) }}
+								{{ $translate(new Date(event.date).toLocaleString("default", { month: "long" })) }}
 							</div>
 							<h6 class="text-sju-50 bg-sju-500 flex-grow p-4 flex items-center dark:bg-sjud-100">
 								<!-- To be worked on upon events register page creation -->

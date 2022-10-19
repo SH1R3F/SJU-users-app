@@ -24,7 +24,7 @@
 									</client-only>
 									<p class="my-4"></p>
 									<!-- To be worked on when adding news pages -->
-									<a class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3" href="https://sju.org.sa/main/news/480">{{ $t("Details") }}</a>
+									<a class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3" href="https://sju.org.sa/main/news/480">{{ $translate("Details") }}</a>
 								</div>
 							</div>
 						</div>
@@ -41,16 +41,16 @@
 			<div class="container">
 				<div class="flex flex-col-reverse md:flex-row">
 					<div class="md:w-1/2 pr-5 rtl:pr-0 rtl:pl-5">
-						<h2 class="text-sju-50 text-4xl py-4 mb-2">{{ $t("about_authority") }}</h2>
-						<p class="text-gray-500 leading-7 text-justify mb-3 pr-5 rtl:pr-0 rtl:pl-5">{{ $t("about_authority_description") }}</p>
+						<h2 class="text-sju-50 text-4xl py-4 mb-2">{{ $translate("about_authority") }}</h2>
+						<p class="text-gray-500 leading-7 text-justify mb-3 pr-5 rtl:pr-0 rtl:pl-5">{{ $translate("about_authority_description") }}</p>
 						<!-- To be worked upon adding pages -->
 						<a href="https://sju.org.sa/main/pages/عن الهيئة">
-							<button class="py-3 px-5 bg-sju-50 text-white hover:bg-white hover:border hover:border-sju-50 hover:text-sju-50 transition">{{ $t("Read more") }}</button>
+							<button class="py-3 px-5 bg-sju-50 text-white hover:bg-white hover:border hover:border-sju-50 hover:text-sju-50 transition">{{ $translate("Read more") }}</button>
 						</a>
 					</div>
 
 					<div class="md:w-1/2">
-						<img src="/images/about-organization.jpg" class="w-full object-fit" :alt="$t('about_authority')" />
+						<img src="/images/about-organization.jpg" class="w-full object-fit" :alt="$translate('about_authority')" />
 					</div>
 				</div>
 			</div>

@@ -21,10 +21,9 @@ export default defineNuxtConfig({
 		],
 	],
 	plugins: [
-		// Both server and client sides plugins
-		"~/plugins/i18n.ts",
 		// Client side plugins
 		"~/plugins/flowbite.client.ts",
+		"~/plugins/i18n.ts",
 	],
 	vite: {
 		plugins: [

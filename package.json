@@ -20,7 +20,6 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.3",
     "flowbite": "^1.5.3",
-    "pinia": "^2.0.23",
-    "vue-i18n": "^9.2.2"
+    "pinia": "^2.0.23"
   }
 }

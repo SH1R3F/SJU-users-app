@@ -3,8 +3,8 @@
 		<div class="container px-2">
 			<div class="flex flex-col md:flex-row gap-8">
 				<div class="md:w-1/2 py-20">
-					<h2 class="text-sju-50 text-3xl mb-2">{{ $t("Follow us") }}</h2>
-					<p class="text-gray-500 px-2">{{ $t("Follow us on social media") }}</p>
+					<h2 class="text-sju-50 text-3xl mb-2">{{ $translate("Follow us") }}</h2>
+					<p class="text-gray-500 px-2">{{ $translate("Follow us on social media") }}</p>
 
 					<!-- Social Icons -->
 					<div class="flex gap-2 mt-2 px-2">
@@ -20,7 +20,7 @@
 					</div>
 					<!-- Social Icons -->
 
-					<h2 class="text-sju-50 text-3xl mt-8 mb-2">{{ $t("Contact us") }}</h2>
+					<h2 class="text-sju-50 text-3xl mt-8 mb-2">{{ $translate("Contact us") }}</h2>
 					<ul class="px-2 mt-4">
 						<li class="flex gap-2 mb-2">
 							<svg xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.351" viewBox="0 0 22.351 22.351">
