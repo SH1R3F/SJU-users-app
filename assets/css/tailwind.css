@@ -5,7 +5,8 @@
 .form {
 	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md;
 }
-h5 {
+h5,
+.h5 {
 	@apply text-xl;
 }
 h4 {

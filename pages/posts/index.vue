@@ -1,17 +1,67 @@
+<script setup>
+	import { storeToRefs } from "pinia"
+	import { usePostStore } from "~/stores/postStore"
+	const { dblocalize } = useLocalization()
+	const router = useRouter()
+	const route = useRoute()
+
+	const postStore = usePostStore()
+	const { posts, categories, getCategory, getPagination } = storeToRefs(postStore)
+
+	// Fetch Categories
+	await postStore.fetchCategories()
+	// Fetch Posts
+	await postStore.fetchPosts()
+
+	const setCategory = (id) => {
+		router.push({
+			path: route.fullPath,
+			query: {
+				category: id,
+				page: 1,
+			},
+		})
+	}
+
+	const setPage = (page) => {
+		router.push({
+			path: route.fullPath,
+			query: {
+				page,
+				category: route.query.category,
+			},
+		})
+	}
+
+	watch(
+		() => route.query,
+		async () => {
+			postStore.category = route.query.category
+			postStore.pagination.current_page = route.query.page
+			await postStore.fetchPosts()
+		}
+	)
+
+	// Page meta
+	const { $i18n } = useNuxtApp()
+	const meta = ref({
+		title: $i18n.translate("Posts list"),
+		breadcrumb: [
+			{
+				link: "/",
+				title: $i18n.translate("Home"),
+			},
+		],
+	})
+
+	definePageMeta({
+		key: (route) => route.fullPath,
+	})
+</script>
+
 <template>
 	<div>
-		<!-- Page Header -->
-		<div class="bg-sju-50 text-white py-8">
-			<div class="container">
-				<nav aria-label="breadcrumb">
-					<ul class="breadcrumb py-3 px-4 mb-4">
-						<li class="breadcrumb-item"><a href="https://sju.org.sa/">الرئيسية</a></li>
-					</ul>
-				</nav>
-				<h3>قائمة الأخبار</h3>
-			</div>
-		</div>
-		<!-- Page Header -->
+		<page-header :title="meta.title" :breadcrumb="meta.breadcrumb" />
 
 		<div class="page-content py-11 dark:bg-sjud-100">
 			<div class="container">
@@ -19,14 +69,16 @@
 				<ul class="w-full border-b">
 					<li
 						class="cursor-pointer inline-block text-sju-50 text-sm px-5 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
-						:class="{ active: postStore.payload.category == 'all' }"
+						:class="{ active: getCategory() == 'all' }"
+						@click="setCategory('all')"
 					>
 						{{ $translate("All") }}
 					</li>
 					<li
-						v-for="category in postStore.categories"
+						v-for="category in categories"
 						class="cursor-pointer inline-block text-sju-50 text-sm px-5 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
-						:class="{ active: postStore.payload.category == category.id }"
+						:class="{ active: getCategory() == category.id }"
+						@click="setCategory(category.id)"
 					>
 						{{ dblocalize(category, "title") }}
 					</li>
@@ -34,39 +86,19 @@
 				<!-- Nav Pills -->
 
 				<!-- Posts -->
-				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 my-10">
-					<div v-for="post in postStore.posts">
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 my-10" v-if="posts">
+					<div v-for="post in posts">
 						<post-preview :post="post" />
 					</div>
 					<!-- Posts -->
 				</div>
 
-				<!-- Pagination -->
-				<div class="bg-sju-500 py-5 p-7 rounded-sm flex justify-end">
-					<ul>
-						<li
-							v-for="page in postStore.pagination.end - postStore.pagination.start"
-							:class="{ active: postStore.payload.page + 1 == postStore.pagination.start + page }"
-							class="inline-block bg-white text-sju-50 py-1 px-2.5 mx-0.5 border transition hover:bg-sju-500 [&.active]:bg-sju-50 [&.active]:text-white cursor-pointer"
-							@click="postStore.paginateTo(postStore.pagination.start + page)"
-						>
-							<!-- i stopped here -->
-							{{ postStore.pagination.start + page }}
-						</li>
-					</ul>
+				<div class="my-5 p-5 bg-sju-50 rounded-sm text-white" v-else>
+					{{ $translate("No posts found") }}
 				</div>
-				<!-- Pagination -->
+
+				<simple-pagination :pagination="getPagination()" @paginate="setPage" v-if="getPagination().last_page" />
 			</div>
 		</div>
 	</div>
 </template>
-
-<script setup>
-	import { usePostStore } from "~~/stores/postStore"
-
-	const { dblocalize } = useLocalization()
-
-	const postStore = usePostStore()
-	postStore.fetchCategories()
-	postStore.fetchPosts()
-</script>

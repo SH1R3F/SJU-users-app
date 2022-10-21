@@ -11,8 +11,15 @@ export const useHomeStore = defineStore("homeStore", {
 	actions: {
 		// Fetch home objects
 		async fetchHomeData() {
-			const { apiFetch } = useApiFetch()
-			const { posts, mediacenter, studio, events, stats } = await apiFetch("/home")
+			const { useMyFetch } = useApiFetch()
+			const { data } = await useMyFetch("/home", {
+				key: "home-data",
+			})
+			if (!data.value) {
+				throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+			}
+			const { mediacenter, studio, events, stats } = data.value
+
 			this.mediacenter = mediacenter
 			this.studio = studio
 			this.events = events

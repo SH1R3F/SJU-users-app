@@ -6,12 +6,11 @@
 	>
 		<div v-if="post.category">
 			<!-- To be worked on upon categories pages creation -->
-			<a class="text-white bg-sju-50 text-xs py-2 px-3" href="https://sju.org.sa/main/news/?catid=0"> {{ dblocalize(post.category, "title") }} </a>
+			<nuxt-link class="text-white bg-sju-50 text-xs py-2 px-3" :to="`/posts?category=${post.category.id}`"> {{ dblocalize(post.category, "title") }} </nuxt-link>
 		</div>
 		<div v-else></div>
 		<div class="text-white px-2.5 pb-4">
-			<!-- To be worked on having a link here for the post -->
-			<h5 class="mb-1.5 text-xl">{{ dblocalize(post, "title") }}</h5>
+			<nuxt-link :to="`/posts/${post.id}`" class="mb-1.5 block">{{ dblocalize(post, "title") }}</nuxt-link>
 			<span class="text-xs">{{ post.post_date }}</span>
 		</div>
 	</div>

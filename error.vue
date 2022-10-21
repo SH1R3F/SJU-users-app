@@ -10,7 +10,7 @@
 						</h2>
 						<p class="text-2xl font-semibold md:text-3xl">{{ $translate("Sorry, we couldn't find this page.") }}</p>
 						<p class="mt-4 mb-8 dark:text-gray-400">{{ $translate("But dont worry, you can find plenty of other things on our homepage.") }}</p>
-						<nuxt-link :to="{ name: 'index' }" class="btn-primary px-8 py-3 font-semibold rounded">{{ $translate("Back to homepage") }}</nuxt-link>
+						<button @click="clearError({ redirect: '/' })" class="btn-primary px-8 py-3 font-semibold rounded">{{ $translate("Back to homepage") }}</button>
 					</div>
 				</div>
 			</section>

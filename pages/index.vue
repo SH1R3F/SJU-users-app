@@ -19,12 +19,9 @@
 							</div>
 							<div class="md:w-1/3 flex items-center px-5 py-5">
 								<div class="text-white pr-3 rtl:pr-0 rtl:pl-3 overflow-hidden">
-									<client-only>
-										<h3 class="mb-2 text-xl md:text-2xl">{{ dblocalize(post, "title") }}</h3>
-									</client-only>
+									<h3 class="mb-2 text-xl md:text-2xl">{{ dblocalize(post, "title") }}</h3>
 									<p class="my-4"></p>
-									<!-- To be worked on when adding news pages -->
-									<a class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3" href="https://sju.org.sa/main/news/480">{{ $translate("Details") }}</a>
+									<nuxt-link class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3" :to="`/posts/${post.id}`">{{ $translate("Details") }}</nuxt-link>
 								</div>
 							</div>
 						</div>
@@ -75,7 +72,7 @@
 		<!-- Membership Details -->
 
 		<!-- Statistics -->
-		<home-stats :stats="homeStore.stats" />
+		<home-stats :stats="homeStore.stats" v-if="homeStore.stats" />
 		<!-- Statistics -->
 
 		<!-- Follow Us Section -->
@@ -91,9 +88,15 @@
 
 	const { dblocalize } = useLocalization()
 	// Fetch last 6 news
-	const { apiFetch } = useApiFetch()
-	const res = await apiFetch("/home")
-	const posts = res.posts
+	const { useMyFetch } = useApiFetch()
+	const { data } = await useMyFetch("/home", {
+		key: "home-posts",
+	})
+	if (!data.value) {
+		throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+	}
+
+	const posts = data.value.posts
 
 	// Slider configuration
 	if (process.client) {
