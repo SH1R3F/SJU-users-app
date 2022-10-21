@@ -42,3 +42,9 @@ select {
 .input-group > .prepend {
 	@apply sm:w-2/12 md:w-1/12 text-center py-2 px-3 text-sm border border-r-0;
 }
+.content * {
+	@apply leading-8 break-words text-gray-500;
+}
+.content hr {
+	@apply my-6;
+}

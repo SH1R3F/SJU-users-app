@@ -53,6 +53,9 @@
 			},
 		],
 	})
+	useHead({
+		title: meta.value.title,
+	})
 
 	definePageMeta({
 		key: (route) => route.fullPath,

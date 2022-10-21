@@ -30,7 +30,6 @@
 	const darkmode = useHomeStore().darkMode
 
 	useHead({
-		title: $i18n.translate("Saudi journalists association"),
 		titleTemplate: (title) => (title ? `${title} - ${$i18n.translate("Saudi journalists association")}` : $i18n.translate("Saudi journalists association")),
 		meta: [
 			{

@@ -5,7 +5,6 @@
 		:style="`background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7)), url('${post.photos[0]}'); background-size: 100% 100%;`"
 	>
 		<div v-if="post.category">
-			<!-- To be worked on upon categories pages creation -->
 			<nuxt-link class="text-white bg-sju-50 text-xs py-2 px-3" :to="`/posts?category=${post.category.id}`"> {{ dblocalize(post.category, "title") }} </nuxt-link>
 		</div>
 		<div v-else></div>
