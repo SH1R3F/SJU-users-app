@@ -1,3 +1,15 @@
+<script setup>
+	import { useAuthStore } from "~~/stores/authStore"
+
+	if (process.client) {
+		const targetEl = document.getElementById("loginModal")
+		const modal = new Modal(targetEl)
+	}
+
+	// Authentication
+	const authStore = useAuthStore()
+</script>
+
 <template>
 	<div>
 		<!-- Header -->
@@ -8,8 +20,18 @@
 						<img src="/images/logo.png" alt="هيئة الصحفيين السعوديين" class="h-28" />
 					</a>
 					<!-- Login button, Modal trigger -->
-					<label class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer" data-modal-toggle="loginModal">
-						<svg xmlns="http://www.w3.org/2000/svg" width="45.485" height="39.798" viewBox="0 0 45.485 39.798" class="mx-auto mb-1">
+					<label
+						class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer"
+						data-modal-toggle="loginModal"
+						v-if="!authStore.authenticated"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="45.485"
+							height="39.798"
+							viewBox="0 0 45.485 39.798"
+							class="mx-auto mb-1"
+						>
 							<g id="user_6_" data-name="user (6)" transform="translate(0 -0.008)">
 								<path
 									id="Path_3"
@@ -43,6 +65,34 @@
 						</svg>
 						<span class="font-bold text-white">{{ $translate("login") }}</span>
 					</label>
+					<label class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer" v-else>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="45.485"
+							height="39.798"
+							viewBox="0 0 45.485 39.798"
+							class="mx-auto mb-1"
+						>
+							<g id="user_6_" data-name="user (6)" transform="translate(0 -0.008)">
+								<path
+									id="Path_3"
+									data-name="Path 3"
+									d="M94.808,18.959a9.476,9.476,0,1,1,9.476-9.475A9.486,9.486,0,0,1,94.808,18.959Zm0-16.109a6.633,6.633,0,1,0,6.633,6.633A6.64,6.64,0,0,0,94.808,2.851Zm0,0"
+									transform="translate(-77.752)"
+									fill="#fff"
+								></path>
+								<path
+									id="Path_4"
+									data-name="Path 4"
+									d="M32.691,273.064H1.421A1.422,1.422,0,0,1,0,271.643V265.01a9.012,9.012,0,0,1,9-9H25.111a9.012,9.012,0,0,1,9,9v6.633A1.422,1.422,0,0,1,32.691,273.064ZM2.843,270.221H31.27V265.01a6.166,6.166,0,0,0-6.159-6.159H9a6.166,6.166,0,0,0-6.159,6.159Zm0,0"
+									transform="translate(0 -233.258)"
+									fill="#fff"
+								></path>
+							</g>
+						</svg>
+						<span class="font-bold text-white">{{ $translate("logout") }}</span>
+					</label>
+
 					<!-- Login button, Modal trigger -->
 				</div>
 			</div>
@@ -50,19 +100,32 @@
 		<!-- Header -->
 
 		<!-- Modal -->
-		<div id="loginModal" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+		<div
+			id="loginModal"
+			aria-hidden="true"
+			class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full"
+			tabindex="-1"
+		>
 			<div class="relative p-4 w-full max-w-2xl h-full md:h-auto">
 				<!-- Modal content -->
 				<div class="modal-box relative bg-white rounded-lg shadow dark:bg-sjud-100">
 					<!-- Modal header -->
 					<div class="flex justify-between items-start p-4 rounded-t border-b dark:border-sjud-500">
-						<h3 class="text-xl font-medium text-gray-900 dark:text-gray-200">{{ $translate("Login to sju") }}</h3>
+						<h3 class="text-xl font-medium text-gray-900 dark:text-gray-200">
+							{{ $translate("Login to sju") }}
+						</h3>
 						<button
 							type="button"
 							class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 inline-flex items-center dark:hover:bg-sjud-200"
 							data-modal-toggle="loginModal"
 						>
-							<svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+							<svg
+								aria-hidden="true"
+								class="w-5 h-5"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+							>
 								<path
 									fill-rule="evenodd"
 									d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
@@ -78,40 +141,81 @@
 						<!-- Trainees -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $translate("Subscribers") }}</div>
-							<a class="block px-4 mb-2" href="https://sju.org.sa/users/login">
-								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
+							<a class="block px-4 mb-2" href="#" data-modal-toggle="loginModal">
+								<button
+									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
+								>
+									تسجيل دخول
+								</button>
 							</a>
-							<a class="block px-4" href="https://sju.org.sa/users/register">
-								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200">تسجيل جديد</button>
-							</a>
+							<nuxt-link class="block px-4" to="/subscribers/register" data-modal-toggle="loginModal">
+								<button
+									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200"
+									data-modal-toggle="loginModal"
+								>
+									تسجيل جديد
+								</button>
+							</nuxt-link>
 						</div>
 
 						<!-- Members -->
-						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50">
+						<div
+							class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50"
+						>
 							<div class="text-2xl pb-8 text-white">{{ $translate("Members") }}</div>
-							<a class="block px-4 mb-2" href="https://sju.org.sa/members/login">
-								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
+							<a
+								class="block px-4 mb-2"
+								href="https://sju.org.sa/members/login"
+								data-modal-toggle="loginModal"
+							>
+								<button
+									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
+								>
+									تسجيل دخول
+								</button>
 							</a>
-							<a class="block px-4" href="https://sju.org.sa/members/register">
-								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl">تسجيل جديد</button>
+							<a
+								class="block px-4"
+								href="https://sju.org.sa/members/register"
+								data-modal-toggle="loginModal"
+							>
+								<button
+									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl"
+								>
+									تسجيل جديد
+								</button>
 							</a>
 						</div>
 
 						<!-- Volunteers -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $translate("Volunteers") }}</div>
-							<a class="block px-4 mb-2" href="https://sju.org.sa/volunteers/login">
-								<button class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50">تسجيل دخول</button>
+							<a
+								class="block px-4 mb-2"
+								href="https://sju.org.sa/volunteers/login"
+								data-modal-toggle="loginModal"
+							>
+								<button
+									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
+								>
+									تسجيل دخول
+								</button>
 							</a>
-							<a class="block px-4" href="https://sju.org.sa/volunteers/register">
-								<button class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200">تسجيل جديد</button>
-							</a>
+							<nuxt-link class="block px-4" to="/volunteers/register" data-modal-toggle="loginModal">
+								<button
+									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200"
+								>
+									تسجيل جديد
+								</button>
+							</nuxt-link>
 						</div>
 					</div>
 					<!-- Modal Body -->
 
 					<!-- Modal footer -->
-					<div class="flex items-center justify-end p-3 rounded-b border-t border-gray-200 dark:border-sjud-500">
+					<div
+						class="flex items-center justify-end p-3 rounded-b border-t border-gray-200 dark:border-sjud-500"
+					>
 						<button
 							data-modal-toggle="loginModal"
 							type="button"

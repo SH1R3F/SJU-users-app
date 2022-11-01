@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 .form {
-	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md;
+	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md  dark:bg-sjud-200 dark:border-gray-600 dark:border-t-sjud-300 dark:text-gray-300;
+}
+.form input,
+.form select {
+	@apply dark:bg-sjud-600 dark:border-sjud-50 dark:focus:border-sju-50;
 }
 h5,
 .h5 {
@@ -18,8 +22,10 @@ h3 {
 label {
 	@apply inline-block mb-2;
 }
-input:not([type="radio"]):not([type="checkbox"]) {
-	@apply block w-full border py-2 px-3 outline-none rounded-sm text-sm focus:border-sju-400;
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]) {
+	@apply block w-full border py-2 px-3 outline-none rounded-sm text-sm border-gray-400 focus:border-sju-400 focus:outline-none;
+
+	line-height: 1.25rem;
 }
 .btn {
 	@apply py-1.5 px-3 rounded-sm transition shadow-sm;
@@ -37,14 +43,18 @@ select {
 	@apply flex flex-row-reverse rtl:flex-row;
 }
 .input-group > input {
-	@apply sm:w-10/12 md:w-11/12 border-l-0 rounded-l-none focus:border-gray-100;
+	@apply sm:w-10/12 md:w-10/12 border-l-0 rounded-l-none focus:border-gray-100;
 }
 .input-group > .prepend {
-	@apply sm:w-2/12 md:w-1/12 text-center py-2 px-3 text-sm border border-r-0;
+	@apply sm:w-2/12 md:w-2/12 text-center px-1 mb-0 text-sm border border-r-0;
 }
 .content * {
 	@apply leading-8 break-words text-gray-500;
 }
 .content hr {
 	@apply my-6;
+}
+
+* {
+	font-family: "Droid Arabic Kufi", sans-serif !important;
 }

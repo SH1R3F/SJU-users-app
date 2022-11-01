@@ -12,12 +12,13 @@
 
 <style>
 	body {
-		font-family: "Droid Arabic Kufi", sans-serif;
+		font-family: "Droid Arabic Kufi", sans-serif !important;
 	}
 </style>
 
 <script setup>
 	import { useHomeStore } from "~/stores/homeStore"
+	import { useAuthStore } from "~/stores/authStore"
 
 	const { $i18n } = useNuxtApp()
 
@@ -26,11 +27,20 @@
 		loading.value = false
 	}
 
+	// Init Auth
+	onBeforeMount(() => {
+		const authStore = useAuthStore()
+		authStore.initAuth()
+	})
+
+	// Page Meta
 	const locale = $i18n.locale
 	const darkmode = useHomeStore().darkMode
-
 	useHead({
-		titleTemplate: (title) => (title ? `${title} - ${$i18n.translate("Saudi journalists association")}` : $i18n.translate("Saudi journalists association")),
+		titleTemplate: (title) =>
+			title
+				? `${title} - ${$i18n.translate("Saudi journalists association")}`
+				: $i18n.translate("Saudi journalists association"),
 		meta: [
 			{
 				name: "keywords",

@@ -13,7 +13,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 		},
 	}
 
-	nuxtApp.vueApp.use(i18nPlugin, {
+	const i18n = {
 		locale: useCookie("locale").value || "ar",
 		messages: {
 			ar,
@@ -22,5 +22,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 		translate: function (key) {
 			return this.messages[this.locale][key]
 		},
-	})
+	}
+
+	nuxtApp.vueApp.use(i18nPlugin, i18n)
 })
