@@ -1,6 +1,7 @@
+import { useAuthStore } from "~~/stores/authStore"
+
 export default () => {
 	const { $i18n } = useNuxtApp()
-	const token = useCookie("XSRF-TOKEN").value
 
 	const useMyFetch = async (url, options = {}) => {
 		// CSRF token
@@ -12,15 +13,27 @@ export default () => {
 			}
 		}
 
+		const authStore = useAuthStore()
 		return useFetch(url, {
 			baseURL: "http://127.0.0.1:8000/api",
 			headers: {
 				"Accept-Language": $i18n.locale,
 				Accept: "application/json",
 				"Cache-Control": "no-cache",
+				Authorization: `Bearer ${authStore.accessToken}`,
 			},
 			initialCache: false,
 			credentials: "include",
+			async onResponseError({ request, response, options }) {
+				if (response.status === 403) {
+					// UnAuthenticate User On Front and Redirect
+
+					// Route to be redirected when unauthenticated error occurs
+					// router.push("/volunteers/register")
+					console.log("You are not authenticated")
+					console.log(authStore.accessToken)
+				}
+			},
 			...options,
 		})
 	}

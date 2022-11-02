@@ -117,9 +117,13 @@
 	"TermsAcceptance": "I accept that all data is correct, and if otherwise, the subscription will be suspended",
 	"acceptance": "Acceptance",
 	"Register": "Register",
+	"Login": "Login",
 	"From a friend": "From a friend",
 	"Twitter": "Twitter",
 	"Youtube": "Youtube",
+	"You can register as a new volunteer from this link": "You can register as a new volunteer from this link",
+	"Click here to register": "Click here to register",
+	"Login volunteers": "Login volunteers",
 
 	"/***************************** Months **********************/": "",
 	"January": "January",

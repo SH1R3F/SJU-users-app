@@ -119,9 +119,13 @@
 	"TermsAcceptance": "أتعهد بأن جميع البيانات صحيحة ، وإن كانت خلاف ذلك سيتم إيقاف الاشتراك",
 	"acceptance": "التعهد",
 	"Register": "تسجيل",
+	"Login": "دخول",
 	"From a friend": "من صديق",
 	"Twitter": "تويتر",
 	"Youtube": "يوتيوب",
+	"You can register as a new volunteer from this link": "يمكنك التسجيل كمتطوع جديد من خلال الرابط التالي",
+	"Click here to register": "إضغط هنا للتسجيل",
+	"Login volunteers": "دخول المتطوعين",
 
 	"/***************************** Months **********************/": "",
 	"January": "يناير",

@@ -35,6 +35,8 @@
 			localStorage.setItem("userData", JSON.stringify(data.value.userData))
 			localStorage.setItem("userType", "volunteer")
 			localStorage.setItem("accessToken", data.value.accessToken)
+
+			// Redirect to user dashboard
 		}
 	}
 
@@ -43,6 +45,9 @@
 	useHead({
 		title,
 	})
+	definePageMeta({
+		middleware: "guest",
+	})
 </script>
 
 <template>
@@ -50,7 +55,7 @@
 		<div class="container">
 			<!-- Register Subscriber Form -->
 			<div class="form">
-				<h5 class="text-sju-50 mb-5 border-b border-b-sju-400 pt-0 px-1 pb-2 inline-block dark:font-bold">
+				<h5 class="form-title">
 					{{ title }}
 				</h5>
 
@@ -632,10 +637,6 @@
 					<div class="text-end">
 						<button type="submit" class="btn-primary">
 							{{ $translate("Register") }}
-							<!-- I stopped here
-              What i wanna do now.. Submit this form and register it to database \\ Or show backend validation errors 
-              then implement a recaptcha
-              then work on authentication in frontend -->
 						</button>
 					</div>
 				</FormKit>

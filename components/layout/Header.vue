@@ -16,14 +16,14 @@
 		<div class="h-32 py-2">
 			<div class="container">
 				<div class="flex justify-between items-center px-2">
-					<a href="https://sju.org.sa/">
+					<nuxt-link to="/">
 						<img src="/images/logo.png" alt="هيئة الصحفيين السعوديين" class="h-28" />
-					</a>
+					</nuxt-link>
 					<!-- Login button, Modal trigger -->
-					<label
+					<div
+						v-show="!authStore.authenticated"
 						class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer"
 						data-modal-toggle="loginModal"
-						v-if="!authStore.authenticated"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +64,12 @@
 							</g>
 						</svg>
 						<span class="font-bold text-white">{{ $translate("login") }}</span>
-					</label>
-					<label class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer" v-else>
+					</div>
+					<div
+						v-show="authStore.authenticated"
+						class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer"
+						@click.prevent="authStore.logout()"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="45.485"
@@ -91,7 +95,7 @@
 							</g>
 						</svg>
 						<span class="font-bold text-white">{{ $translate("logout") }}</span>
-					</label>
+					</div>
 
 					<!-- Login button, Modal trigger -->
 				</div>

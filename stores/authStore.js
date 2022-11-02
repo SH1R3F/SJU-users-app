@@ -16,14 +16,13 @@ export const useAuthStore = defineStore("authStore", {
 
 	actions: {
 		initAuth() {
-			const user = localStorage.getItem("userData") || {}
+			const user = localStorage.getItem("userData") || "{}"
 			const type = localStorage.getItem("userType") || null
 			const token = localStorage.getItem("accessToken") || null
-			this.userData = user
+			this.userData = JSON.parse(user)
 			this.userType = type
 			this.accessToken = token
-
-			if (user) {
+			if (token) {
 				this.authenticated = true
 			}
 		},
@@ -36,6 +35,35 @@ export const useAuthStore = defineStore("authStore", {
 				method: "POST",
 				body: volunteer,
 			})
+		},
+
+		async loginVolunteer(volunteer) {
+			const { useMyFetch } = useApiFetch()
+
+			return await useMyFetch("/volunteers/login", {
+				key: "login-volunteer",
+				method: "POST",
+				body: volunteer,
+			})
+		},
+
+		async logout() {
+			const { useMyFetch } = useApiFetch()
+
+			// Logout on backend
+			const res = await useMyFetch("/auth/logout", {
+				key: "logout",
+				method: "POST",
+			})
+
+			// Logout on frontend
+			localStorage.removeItem("userData")
+			localStorage.removeItem("userType")
+			localStorage.removeItem("accessToken")
+			this.userData = {}
+			this.userType = null
+			this.accessToken = null
+			this.authenticated = false
 		},
 	},
 })
