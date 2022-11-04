@@ -2,15 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.form {
-	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md  dark:bg-sjud-200 dark:border-gray-600 dark:border-t-sjud-300 dark:text-gray-300;
+.form,
+.card {
+	@apply border border-sju-500 border-t-4 border-t-sju-400 py-10 px-5 rounded-lg shadow-md  dark:bg-sjud-200 dark:border-gray-600 dark:border-t-sjud-300 dark:text-gray-300 mb-8;
 }
-.form-title {
+.form-title,
+.card-title {
 	@apply text-sju-50 mb-5 border-b border-b-sju-400 pt-0 px-1 pb-2 inline-block dark:font-bold;
 }
 .form input,
 .form select {
-	@apply dark:bg-sjud-600 dark:border-sjud-50 dark:focus:border-sju-50;
+	@apply dark:bg-sjud-600 dark:border-sjud-50 dark:text-sjud-400 dark:focus:border-sju-50;
 }
 h5,
 .h5 {
@@ -59,4 +61,11 @@ select {
 }
 * {
 	font-family: "Droid Arabic Kufi", sans-serif !important;
+	box-sizing: border-box;
+}
+
+/* Fixing formkit Checkbox and radio */
+[data-type="checkbox"] .formkit-input,
+[data-type="radio"] .formkit-input {
+	left: auto !important;
 }

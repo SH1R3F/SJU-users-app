@@ -65,10 +65,10 @@
 						</svg>
 						<span class="font-bold text-white">{{ $translate("login") }}</span>
 					</div>
-					<div
-						v-show="authStore.authenticated"
+					<nuxt-link
+						v-if="authStore.authenticated"
+						:to="`/${authStore.userType}s/`"
 						class="flex flex-col justify-center bg-sju-100 h-24 px-9 cursor-pointer"
-						@click.prevent="authStore.logout()"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -94,8 +94,8 @@
 								></path>
 							</g>
 						</svg>
-						<span class="font-bold text-white">{{ $translate("logout") }}</span>
-					</div>
+						<span class="font-bold text-white">{{ $translate("Profile") }}</span>
+					</nuxt-link>
 
 					<!-- Login button, Modal trigger -->
 				</div>
@@ -194,22 +194,22 @@
 						<!-- Volunteers -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $translate("Volunteers") }}</div>
-							<a
+							<nuxt-link
 								class="block px-4 mb-2"
-								href="https://sju.org.sa/volunteers/login"
+								to="/volunteers/auth/login"
 								data-modal-toggle="loginModal"
 							>
 								<button
 									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
 								>
-									تسجيل دخول
+									{{ $translate("Login") }}
 								</button>
-							</a>
-							<nuxt-link class="block px-4" to="/volunteers/register" data-modal-toggle="loginModal">
+							</nuxt-link>
+							<nuxt-link class="block px-4" to="/volunteers/auth/register" data-modal-toggle="loginModal">
 								<button
 									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200"
 								>
-									تسجيل جديد
+									{{ $translate("Register") }}
 								</button>
 							</nuxt-link>
 						</div>

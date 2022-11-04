@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		// secret serverside variables
 		public: {
-			baseUrl: "http://127.0.0.1:8000/api/",
+			baseURL: "http://127.0.0.1:8000/api/",
 			apiBase: "http://127.0.0.1:8000/api/",
 		},
 	},

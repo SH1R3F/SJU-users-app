@@ -1,31 +1,24 @@
 <script setup>
 	import FaSolidUserEdit from "~icons/fa-solid/user-edit"
 	import { useAuthStore } from "~~/stores/authStore"
+
+	// CSRF Token
+	onBeforeMount(async () => {
+		const { useFetchCookies } = useApiFetch()
+		await useFetchCookies()
+	})
+
 	const { $i18n } = useNuxtApp()
 	const toast = useToast()
 
 	const loginVolunteer = async (body, node) => {
 		const authStore = useAuthStore()
-		const { data, error } = await authStore.loginVolunteer(body)
+		const { error } = await authStore.loginVolunteer(body)
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
 		} else if (error?.value?.response?.status === 422) {
 			toast.error(error.value?.data?.message)
-		}
-		// On success
-		if (data?.value) {
-			authStore.authenticated = true
-			authStore.userData = data.value.userData
-			authStore.userType = "volunteer"
-			authStore.accessToken = data.value.accessToken
-
-			// Save to Local Storage
-			localStorage.setItem("userData", JSON.stringify(data.value.userData))
-			localStorage.setItem("userType", "volunteer")
-			localStorage.setItem("accessToken", data.value.accessToken)
-
-			// Redirect to user dashboard
 		}
 	}
 
@@ -101,7 +94,7 @@
 
 						<h4 class="text-sju-200 mb-2">{{ $translate("Register new volunteer") }}</h4>
 						<p class="mb-4">{{ $translate("You can register as a new volunteer from this link") }}</p>
-						<nuxt-link to="volunteers/register" class="text-sju-50">{{
+						<nuxt-link to="/volunteers/auth/register" class="text-sju-50">{{
 							$translate("Click here to register")
 						}}</nuxt-link>
 					</div>

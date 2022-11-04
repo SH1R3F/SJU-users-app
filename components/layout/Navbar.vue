@@ -49,9 +49,6 @@
 	const { data } = await useMyFetch("/menus", {
 		key: "menus",
 	})
-	if (!data.value) {
-		throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
-	}
 	const { menus } = data.value
 
 	const { dblocalize } = useLocalization()

@@ -4,15 +4,6 @@ export default () => {
 	const { $i18n } = useNuxtApp()
 
 	const useMyFetch = async (url, options = {}) => {
-		// CSRF token
-		if (options.method === "POST") {
-			let token = useCookie("XSRF-TOKEN")?.value
-			if (!token) {
-				await useFetchCookies()
-				token = useCookie("XSRF-TOKEN").value
-			}
-		}
-
 		const authStore = useAuthStore()
 		return useFetch(url, {
 			baseURL: "http://127.0.0.1:8000/api",
@@ -46,5 +37,6 @@ export default () => {
 
 	return {
 		useMyFetch,
+		useFetchCookies,
 	}
 }

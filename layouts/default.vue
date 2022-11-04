@@ -27,12 +27,6 @@
 		loading.value = false
 	}
 
-	// Init Auth
-	onBeforeMount(() => {
-		const authStore = useAuthStore()
-		authStore.initAuth()
-	})
-
 	// Page Meta
 	const locale = $i18n.locale
 	const darkmode = useHomeStore().darkMode

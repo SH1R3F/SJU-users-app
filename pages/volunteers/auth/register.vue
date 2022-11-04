@@ -1,8 +1,14 @@
 <script setup>
 	import { useAuthStore } from "~~/stores/authStore"
 
+	// CSRF Token
+	onBeforeMount(async () => {
+		const { useFetchCookies } = useMyFetch()
+		await useFetchCookies()
+	})
+
 	const { $i18n } = useNuxtApp()
-	const { countries, cities, branches, qualifications, howKnewUs, mobileCodes } = useSiteConfig()
+	const { genders, countries, cities, branches, qualifications, howKnewUs, mobileCodes } = useSiteConfig()
 
 	const volunteerData = ref({})
 
@@ -17,26 +23,10 @@
 		})
 		body.append("image", volunteer.image[0]?.file)
 
-		const { data, error } = await authStore.registerVolunteer(body)
-
+		const { error } = await authStore.registerVolunteer(body)
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
-		}
-
-		// On success
-		if (data?.value) {
-			authStore.authenticated = true
-			authStore.userData = data.value.userData
-			authStore.userType = "volunteer"
-			authStore.accessToken = data.value.accessToken
-
-			// Save to Local Storage
-			localStorage.setItem("userData", JSON.stringify(data.value.userData))
-			localStorage.setItem("userType", "volunteer")
-			localStorage.setItem("accessToken", data.value.accessToken)
-
-			// Redirect to user dashboard
 		}
 	}
 
@@ -176,16 +166,7 @@
 						type="myRadio"
 						name="gender"
 						:label="$translate('Gender')"
-						:options="[
-							{
-								label: $translate('Male'),
-								value: 0,
-							},
-							{
-								label: $translate('Female'),
-								value: 1,
-							},
-						]"
+						:options="genders"
 						:validation-label="$translate('Gender')"
 						validation="required"
 						:classes="{
@@ -536,7 +517,7 @@
 						<!-- Email -->
 
 						<!-- Mobile -->
-						<div class="formkit-outer mb-3" data-family="text" data-type="email">
+						<div class="formkit-outer mb-3" data-family="text">
 							<label for="mobile" class="formkit-label">{{ $translate("Mobile") }}</label>
 							<div
 								class="input-group [&>.formkit-outer]:mb-0 h-9"
@@ -605,20 +586,6 @@
 					</div>
 
 					<div class="mb-7">
-						<!-- To be replaced with google captcha! -->
-						<!-- <label for="userPassword">رمز التحقق</label>
-						<input
-							type="password"
-							name="password"
-							class="form-control"
-							id="userPassword"
-							placeholder="رمز التحقق"
-							required
-							autocompleted=""
-						/> -->
-					</div>
-
-					<div class="mb-7">
 						<FormKit
 							type="checkbox"
 							:label="$translate('TermsAcceptance')"
@@ -645,10 +612,3 @@
 		</div>
 	</div>
 </template>
-
-<style>
-	[data-type="checkbox"] .formkit-input,
-	[data-type="radio"] .formkit-input {
-		left: auto;
-	}
-</style>

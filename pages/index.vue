@@ -15,13 +15,21 @@
 					>
 						<div class="flex flex-col md:flex-row-reverse">
 							<div class="md:w-2/3 order-lg-last">
-								<img class="object-cover h-56 md:h-96 w-full" :src="post.photos[0]" :alt="dblocalize(post, 'title')" />
+								<img
+									class="object-cover h-56 md:h-96 w-full"
+									:src="post.photos[0]"
+									:alt="dblocalize(post, 'title')"
+								/>
 							</div>
 							<div class="md:w-1/3 flex items-center px-5 py-5">
 								<div class="text-white pr-3 rtl:pr-0 rtl:pl-3 overflow-hidden">
 									<h3 class="mb-2 text-xl md:text-2xl">{{ dblocalize(post, "title") }}</h3>
 									<p class="my-4"></p>
-									<nuxt-link class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3" :to="`/posts/${post.id}`">{{ $translate("Details") }}</nuxt-link>
+									<nuxt-link
+										class="bg-sju-50 text-xs py-2 px-3 text-sju-400 mt-3"
+										:to="`/posts/${post.id}`"
+										>{{ $translate("Details") }}</nuxt-link
+									>
 								</div>
 							</div>
 						</div>
@@ -39,15 +47,25 @@
 				<div class="flex flex-col-reverse md:flex-row">
 					<div class="md:w-1/2 pr-5 rtl:pr-0 rtl:pl-5">
 						<h2 class="text-sju-50 text-4xl py-4 mb-2">{{ $translate("about_authority") }}</h2>
-						<p class="text-gray-500 leading-7 text-justify mb-3 pr-5 rtl:pr-0 rtl:pl-5">{{ $translate("about_authority_description") }}</p>
+						<p class="text-gray-500 leading-7 text-justify mb-3 pr-5 rtl:pr-0 rtl:pl-5">
+							{{ $translate("about_authority_description") }}
+						</p>
 						<!-- To be worked upon adding pages -->
 						<a href="https://sju.org.sa/main/pages/عن الهيئة">
-							<button class="py-3 px-5 bg-sju-50 text-white hover:bg-white hover:border hover:border-sju-50 hover:text-sju-50 transition">{{ $translate("Read more") }}</button>
+							<button
+								class="py-3 px-5 bg-sju-50 text-white hover:bg-white hover:border hover:border-sju-50 hover:text-sju-50 transition"
+							>
+								{{ $translate("Read more") }}
+							</button>
 						</a>
 					</div>
 
 					<div class="md:w-1/2">
-						<img src="/images/about-organization.jpg" class="w-full object-fit" :alt="$translate('about_authority')" />
+						<img
+							src="/images/about-organization.jpg"
+							class="w-full object-fit"
+							:alt="$translate('about_authority')"
+						/>
 					</div>
 				</div>
 			</div>
@@ -87,17 +105,16 @@
 	homeStore.fetchHomeData()
 
 	const { dblocalize } = useLocalization()
-	// Fetch last 6 news
+	// Fetch last 6 posts
 	const { useMyFetch } = useApiFetch()
 	const { data } = await useMyFetch("/home", {
 		key: "home-posts",
 	})
 	if (!data.value) {
-		throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+		// throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
 	}
 
-	const posts = data.value.posts
-
+	const posts = data.value?.posts
 	// Slider configuration
 	if (process.client) {
 		if (document.getElementById("default-carousel")) {

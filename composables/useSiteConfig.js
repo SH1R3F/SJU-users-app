@@ -128,6 +128,7 @@ export default () => {
 		],
 
 		mobileCodes: [
+			{ label: "+966", value: "966" },
 			{ label: "+93", value: "93" },
 			{ label: "+358", value: "358" },
 			{ label: "+355", value: "355" },
@@ -306,7 +307,6 @@ export default () => {
 			{ label: "+685", value: "685" },
 			{ label: "+378", value: "378" },
 			{ label: "+239", value: "239" },
-			{ label: "+966", value: "966" },
 			{ label: "+221", value: "221" },
 			{ label: "+381", value: "381" },
 			{ label: "+248", value: "248" },
@@ -356,6 +356,10 @@ export default () => {
 			{ label: "+967", value: "967" },
 			{ label: "+260", value: "260" },
 			{ label: "+263", value: "263" },
+		],
+		genders: [
+			{ label: $i18n.translate("Male"), value: 0 },
+			{ label: $i18n.translate("Female"), value: 1 },
 		],
 	}
 }
