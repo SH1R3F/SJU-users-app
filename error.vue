@@ -8,16 +8,26 @@
 							<span class="sr-only">{{ $translate("Error") }}</span
 							>404
 						</h2>
-						<p class="text-2xl font-semibold md:text-3xl">{{ $translate("Sorry, we couldn't find this page.") }}</p>
-						<p class="mt-4 mb-8 dark:text-gray-400">{{ $translate("But dont worry, you can find plenty of other things on our homepage.") }}</p>
-						<button @click="clearError({ redirect: '/' })" class="btn-primary px-8 py-3 font-semibold rounded">{{ $translate("Back to homepage") }}</button>
+						<p class="text-2xl font-semibold md:text-3xl">
+							{{ $translate("Sorry, we couldn't find this page.") }}
+						</p>
+						<p class="mt-4 mb-8 dark:text-gray-400">
+							{{ $translate("But dont worry, you can find plenty of other things on our homepage.") }}
+						</p>
+						<button
+							@click="clearError({ redirect: '/' })"
+							class="btn-primary px-8 py-3 font-semibold rounded"
+						>
+							{{ $translate("Back to homepage") }}
+						</button>
 					</div>
 				</div>
 			</section>
 		</template>
 		<template v-else>
-			<div class="container py-20">
-				<h1>Error with {{ statusCode }}</h1>
+			<div class="container py-20 text-center">
+				<h1>Error code {{ statusCode }}</h1>
+				<h2>{{ statusMessage }}</h2>
 			</div>
 		</template>
 	</nuxt-layout>
@@ -28,7 +38,7 @@
 		error: Object,
 	})
 
-	const { statusCode } = error
+	const { statusCode, statusMessage } = error
 
 	setPageLayout("default")
 </script>

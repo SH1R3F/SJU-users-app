@@ -361,5 +361,11 @@ export default () => {
 			{ label: $i18n.translate("Male"), value: 0 },
 			{ label: $i18n.translate("Female"), value: 1 },
 		],
+
+		coursePrices: [
+			{ label: $i18n.translate("Free"), value: 0 },
+			{ label: $i18n.translate("All paid"), value: 1 },
+			{ label: $i18n.translate("Paid certificate"), value: 2 },
+		],
 	}
 }

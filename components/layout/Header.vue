@@ -147,14 +147,14 @@
 							<div class="text-2xl pb-8">{{ $translate("Subscribers") }}</div>
 							<a class="block px-4 mb-2" href="#" data-modal-toggle="loginModal">
 								<button
-									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
+									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50 transition-all"
 								>
 									تسجيل دخول
 								</button>
 							</a>
 							<nuxt-link class="block px-4" to="/subscribers/register" data-modal-toggle="loginModal">
 								<button
-									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200"
+									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200 transition-all"
 									data-modal-toggle="loginModal"
 								>
 									تسجيل جديد
@@ -164,7 +164,7 @@
 
 						<!-- Members -->
 						<div
-							class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50"
+							class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300 bg-sju-300 dark:bg-sju-50 transition-all"
 						>
 							<div class="text-2xl pb-8 text-white">{{ $translate("Members") }}</div>
 							<a
@@ -173,18 +173,18 @@
 								data-modal-toggle="loginModal"
 							>
 								<button
-									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50"
+									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50 transition-all"
 								>
 									تسجيل دخول
 								</button>
 							</a>
 							<a
-								class="block px-4"
+								class="block px-4 transition-all"
 								href="https://sju.org.sa/members/register"
 								data-modal-toggle="loginModal"
 							>
 								<button
-									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl"
+									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl transition-all"
 								>
 									تسجيل جديد
 								</button>

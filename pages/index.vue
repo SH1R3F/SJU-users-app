@@ -50,14 +50,13 @@
 						<p class="text-gray-500 leading-7 text-justify mb-3 pr-5 rtl:pr-0 rtl:pl-5">
 							{{ $translate("about_authority_description") }}
 						</p>
-						<!-- To be worked upon adding pages -->
-						<a href="https://sju.org.sa/main/pages/عن الهيئة">
+						<nuxt-link to="/pages/about-us">
 							<button
 								class="py-3 px-5 bg-sju-50 text-white hover:bg-white hover:border hover:border-sju-50 hover:text-sju-50 transition"
 							>
 								{{ $translate("Read more") }}
 							</button>
-						</a>
+						</nuxt-link>
 					</div>
 
 					<div class="md:w-1/2">
@@ -107,11 +106,14 @@
 	const { dblocalize } = useLocalization()
 	// Fetch last 6 posts
 	const { useMyFetch } = useApiFetch()
-	const { data } = await useMyFetch("/home", {
+	const { data, error } = await useMyFetch("/home", {
 		key: "home-posts",
 	})
-	if (!data.value) {
-		// throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+	if (error?.value?.response?.status) {
+		throw createError({
+			statusCode: error?.value?.response?.status,
+			statusMessage: error?.value?.response?.statusText,
+		})
 	}
 
 	const posts = data.value?.posts

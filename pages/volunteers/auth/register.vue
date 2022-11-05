@@ -590,7 +590,7 @@
 							type="checkbox"
 							:label="$translate('TermsAcceptance')"
 							:validation-label="$translate('acceptance')"
-							validation="required"
+							validation="required|accepted"
 							:classes="{
 								wrapper: {
 									'formkit-wrapper': false,

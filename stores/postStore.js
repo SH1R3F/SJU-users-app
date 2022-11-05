@@ -45,11 +45,19 @@ export const usePostStore = defineStore("postStore", {
 				perPage: 18,
 			}
 			const { useMyFetch } = useApiFetch()
-			const { data, refresh } = await useMyFetch(`/blog/posts?page=${this.pagination.current_page}&perPage=${this.pagination.perPage}&category=${this.getCategory()}`, {
-				key: "posts",
-			})
-			if (!data.value) {
-				throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+			const { data, error, refresh } = await useMyFetch(
+				`/blog/posts?page=${this.pagination.current_page}&perPage=${
+					this.pagination.perPage
+				}&category=${this.getCategory()}`,
+				{
+					key: "posts",
+				}
+			)
+			if (error?.value?.response?.status) {
+				throw createError({
+					statusCode: error?.value?.response?.status,
+					statusMessage: error?.value?.response?.statusText,
+				})
 			}
 
 			this.posts = data.value.data
@@ -58,11 +66,18 @@ export const usePostStore = defineStore("postStore", {
 
 		async fetchPost(id) {
 			const { useMyFetch } = useApiFetch()
-			const { data = {}, refresh } = await useMyFetch(`/blog/posts/${id}`, {
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/blog/posts/${id}`, {
 				key: "post",
 			})
-			if (!data.value) {
-				throw createError({ statusCode: 404, statusMessage: "Post Not Found" })
+			if (error?.value?.response?.status) {
+				throw createError({
+					statusCode: error?.value?.response?.status,
+					statusMessage: error?.value?.response?.statusText,
+				})
 			}
 			this.post = data.value.post
 			this.relatedPosts = data.value.posts

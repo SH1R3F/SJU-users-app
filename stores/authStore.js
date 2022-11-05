@@ -8,33 +8,31 @@ export const useAuthStore = defineStore("authStore", {
 		accessToken: null,
 	}),
 
-	// getters: {
-	//   accessToken(state) {
-	//     if (process.client)
-	//   }
-	// },
-
 	actions: {
 		async initAuth() {
-			const token = useCookie("access-token").value || null
-			if (token) {
-				// Check Token and Fetch User Data From Backend to Set to Store
-				this.accessToken = token
-				// Lets try fetch user with $fetch
-				const res = await $fetch("/auth/user", {
-					baseURL: "http://127.0.0.1:8000/api",
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				})
+			try {
+				const token = useCookie("access-token").value || null
+				if (token) {
+					// Check Token and Fetch User Data From Backend to Set to Store
+					this.accessToken = token
+					// Lets try fetch user with $fetch
+					const res = await $fetch("/auth/user", {
+						baseURL: "http://127.0.0.1:8000/api",
+						headers: {
+							Authorization: `Bearer ${token}`,
+						},
+					})
 
-				if (res) {
-					this.userData = res.user
-					this.userType = res.type
-					this.authenticated = true
+					if (res) {
+						this.userData = res.user
+						this.userType = res.type
+						this.authenticated = true
+					}
 				}
+				return true
+			} catch (e) {
+				console.log("Caught err1: ", e)
 			}
-			return true
 		},
 
 		async registerVolunteer(volunteer) {

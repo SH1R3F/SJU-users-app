@@ -1,10 +1,25 @@
+<script setup>
+	const { title, breadcrumb, date } = defineProps({
+		title: String,
+		breadcrumb: Array,
+		date: String,
+	})
+	const route = useRoute()
+
+	const { $i18n } = useNuxtApp()
+
+	const { formattedDate } = useFormating()
+</script>
 <template>
 	<!-- Page Header -->
 	<div class="bg-sju-50 text-white py-8">
 		<div class="container">
 			<nav aria-label="breadcrumb">
 				<ul class="breadcrumb py-3 px-3 mb-4">
-					<li class="inline-block pl-2 rtl:pl-0 rtl:pr-2 before:content-['/'] first:before:content-[''] before:pr-2 rtl:before:pr-0 rtl:before:pl-2" v-for="page in breadcrumb">
+					<li
+						class="inline-block pl-2 rtl:pl-0 rtl:pr-2 before:content-['/'] first:before:content-[''] before:pr-2 rtl:before:pr-0 rtl:before:pl-2"
+						v-for="page in breadcrumb"
+					>
 						<nuxt-link :to="page.link">{{ page.title }}</nuxt-link>
 					</li>
 				</ul>
@@ -12,10 +27,16 @@
 			<h3>{{ title }}</h3>
 
 			<div class="flex gap-3 mt-5 text-sm">
-				<span class="date" v-if="date">{{ formattedDate }}</span>
+				<span class="date" v-if="date">{{ formattedDate(date) }}</span>
 
 				<nuxt-link :to="route.fullPath" target="_blank">
-					<svg id="share" xmlns="http://www.w3.org/2000/svg" width="16.412" height="16.412" viewBox="0 0 16.412 16.412">
+					<svg
+						id="share"
+						xmlns="http://www.w3.org/2000/svg"
+						width="16.412"
+						height="16.412"
+						viewBox="0 0 16.412 16.412"
+					>
 						<path
 							id="Path_97"
 							data-name="Path 97"
@@ -100,11 +121,29 @@
 								fill="#fff"
 							></path>
 
-							<path id="Path_90" data-name="Path 90" d="M12.445,20.684h-4.1a.342.342,0,0,1,0-.684h4.1a.342.342,0,1,1,0,.684Z" transform="translate(-2.529 -6.323)" fill="#fff"></path>
+							<path
+								id="Path_90"
+								data-name="Path 90"
+								d="M12.445,20.684h-4.1a.342.342,0,0,1,0-.684h4.1a.342.342,0,1,1,0,.684Z"
+								transform="translate(-2.529 -6.323)"
+								fill="#fff"
+							></path>
 
-							<path id="Path_91" data-name="Path 91" d="M12.445,18.684h-4.1a.342.342,0,0,1,0-.684h4.1a.342.342,0,1,1,0,.684Z" transform="translate(-2.529 -5.691)" fill="#fff"></path>
+							<path
+								id="Path_91"
+								data-name="Path 91"
+								d="M12.445,18.684h-4.1a.342.342,0,0,1,0-.684h4.1a.342.342,0,1,1,0,.684Z"
+								transform="translate(-2.529 -5.691)"
+								fill="#fff"
+							></path>
 
-							<path id="Path_92" data-name="Path 92" d="M9.71,16.684H8.342a.342.342,0,0,1,0-.684H9.71a.342.342,0,1,1,0,.684Z" transform="translate(-2.529 -5.059)" fill="#fff"></path>
+							<path
+								id="Path_92"
+								data-name="Path 92"
+								d="M9.71,16.684H8.342a.342.342,0,0,1,0-.684H9.71a.342.342,0,1,1,0,.684Z"
+								transform="translate(-2.529 -5.059)"
+								fill="#fff"
+							></path>
 
 							<path
 								id="Path_93"
@@ -130,20 +169,3 @@
 	</div>
 	<!-- Page Header -->
 </template>
-
-<script setup>
-	const { title, breadcrumb, date } = defineProps({
-		title: String,
-		breadcrumb: Array,
-		date: String,
-	})
-	const route = useRoute()
-
-	const { $i18n } = useNuxtApp()
-
-	const formattedDate = computed(() => {
-		const itemDate = new Date(date)
-		const day = itemDate.toLocaleDateString($i18n.locale, { weekday: "long" })
-		return `${day} ${itemDate.toLocaleDateString("ar-US")}`
-	})
-</script>

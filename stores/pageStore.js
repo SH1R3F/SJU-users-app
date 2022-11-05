@@ -7,11 +7,14 @@ export const usePageStore = defineStore("pageStore", {
 	actions: {
 		async fetchPage(slug) {
 			const { useMyFetch } = useApiFetch()
-			const { data } = await useMyFetch(`/pages/${slug}`, {
+			const { data, error } = await useMyFetch(`/pages/${slug}`, {
 				key: "static-page",
 			})
-			if (!data.value) {
-				throw createError({ statusCode: 404, statusMessage: "Page not found" })
+			if (error?.value?.response?.status) {
+				throw createError({
+					statusCode: error?.value?.response?.status,
+					statusMessage: error?.value?.response?.statusText,
+				})
 			}
 			this.page = data.value.page
 		},
