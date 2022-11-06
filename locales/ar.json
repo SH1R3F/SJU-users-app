@@ -176,6 +176,9 @@
 	"Change password": "تغيير كلمة المرور",
 	"Current password": "كلمة المرور الحالية",
 	"New password": "كلمة المرور الجديدة",
+	"Please verify your email": "يجب تفعيل البريد الإلكتروني.",
+	"Email has been verified successfully": "تم تفعيل البريد الإلكتروني بنجاح.",
+	"Resend verification email": "إعادة إرسال بريد التفعيل",
 
 	"/***************************** Months **********************/": "",
 	"January": "يناير",

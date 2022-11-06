@@ -10,6 +10,7 @@
 
 	const { $i18n } = useNuxtApp()
 	const toast = useToast()
+	const resend_verification = ref(null)
 
 	const loginVolunteer = async (body, node) => {
 		const authStore = useAuthStore()
@@ -17,9 +18,17 @@
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
+			if (error.value?.data?.resend) {
+				resend_verification.value = error.value?.data?.resend
+			}
 		} else if (error?.value?.response?.status === 422) {
 			toast.error(error.value?.data?.message)
 		}
+	}
+
+	const resendVerification = async () => {
+		const authStore = useAuthStore()
+		await authStore.resendVerification(resend_verification.value)
 	}
 
 	// Page Meta
@@ -75,6 +84,12 @@
 								:validation-label="$translate('Password')"
 							/>
 
+							<span
+								v-if="resend_verification"
+								class="text-sju-50 text-sm cursor-pointer"
+								@click="resendVerification"
+								>{{ $translate("Resend verification email") }}</span
+							>
 							<!-- <a href="https://sju.org.sa/volunteers/forget_password" class="text-muted form-text"
 								>نسيت كلمة المرور؟</a
 							> -->

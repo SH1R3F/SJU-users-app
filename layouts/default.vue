@@ -27,6 +27,12 @@
 		loading.value = false
 	}
 
+	const route = useRoute()
+	const toast = useToast()
+	if (route.query?.verified == 1) {
+		toast.success($i18n.translate("Email has been verified successfully"))
+	}
+
 	// Page Meta
 	const locale = $i18n.locale
 	const darkmode = useHomeStore().darkMode

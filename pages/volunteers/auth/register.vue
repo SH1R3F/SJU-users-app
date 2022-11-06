@@ -3,7 +3,7 @@
 
 	// CSRF Token
 	onBeforeMount(async () => {
-		const { useFetchCookies } = useMyFetch()
+		const { useFetchCookies } = useApiFetch()
 		await useFetchCookies()
 	})
 

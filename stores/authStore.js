@@ -48,16 +48,12 @@ export const useAuthStore = defineStore("authStore", {
 
 			// On success
 			if (data?.value) {
-				this.authenticated = true
-				this.userData = data.value.userData
-				this.userType = "volunteer"
-				this.accessToken = data.value.accessToken
-
-				// Save to cookie
-				useCookie("access-token").value = data.value.accessToken
-
-				// Redirect to dashboard
-				router.push(redirectTo)
+				// Redirect to login page.. Because he first needs to verify email!
+				const toast = useToast()
+				const { $i18n } = useNuxtApp()
+				toast.success(data?.value.message)
+				toast.success($i18n.translate("Please verify your email"))
+				router.push("/volunteers/auth/login")
 			}
 
 			return { error }
@@ -89,6 +85,24 @@ export const useAuthStore = defineStore("authStore", {
 			}
 
 			return { error }
+		},
+
+		async resendVerification(resend_url) {
+			if (resend_url) {
+				const { useMyFetch } = useApiFetch()
+				const { data, error } = await useMyFetch(resend_url, {
+					key: "resend-verification",
+					method: "POST",
+				})
+
+				// On success
+				if (data?.value) {
+					const toast = useToast()
+					toast.success(data?.value.message)
+				}
+
+				return { error }
+			}
 		},
 
 		async logout() {
