@@ -21,7 +21,7 @@
 			let value = volunteer[key]
 			body.append(key, value)
 		})
-		body.append("image", volunteer.image[0]?.file)
+		body.append("image", volunteer.image[0]?.file || "")
 
 		const { error } = await authStore.registerVolunteer(body)
 		// On errors

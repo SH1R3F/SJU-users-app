@@ -367,5 +367,10 @@ export default () => {
 			{ label: $i18n.translate("All paid"), value: 1 },
 			{ label: $i18n.translate("Paid certificate"), value: 2 },
 		],
+
+		ticketStatus: [
+			{ label: $i18n.translate("Solved"), value: 0 },
+			{ label: $i18n.translate("Open"), value: 1 },
+		],
 	}
 }

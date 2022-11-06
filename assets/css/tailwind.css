@@ -69,3 +69,11 @@ select {
 [data-type="radio"] .formkit-input {
 	left: auto !important;
 }
+
+/* Chats */
+.bubble-other {
+	@apply mx-2 py-1 px-4 bg-white text-gray-500 shadow-md rounded-bl-3xl rounded-tl-3xl rounded-tr-xl rtl:rounded-none rtl:rounded-br-3xl rtl:rounded-tr-3xl rtl:rounded-tl-xl;
+}
+.bubble-me {
+	@apply mx-2 py-1 px-4 bg-sju-50 text-white rounded-br-3xl rounded-tr-3xl rounded-tl-xl rtl:rounded-none rtl:rounded-bl-3xl rtl:rounded-tl-3xl rtl:rounded-tr-xl;
+}

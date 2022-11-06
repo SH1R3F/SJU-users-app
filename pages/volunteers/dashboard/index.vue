@@ -26,6 +26,13 @@
 		}
 	})
 
+	const { $i18n } = useNuxtApp()
+	// Page Meta
+	const title = $i18n.translate("Events")
+	useHead({
+		title,
+	})
+
 	definePageMeta({
 		middleware: "volunteer",
 	})
@@ -62,9 +69,11 @@
 										<b>{{ $translate("Registered") }}</b>
 									</div>
 									<div v-else>
-										<button class="btn-primary">
-											{{ $translate("Register") }}
-										</button>
+										<nuxt-link :to="`/events/${event.id}`">
+											<button class="btn-primary">
+												{{ $translate("Register") }}
+											</button>
+										</nuxt-link>
 									</div>
 								</td>
 							</tr>
