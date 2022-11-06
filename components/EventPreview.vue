@@ -13,7 +13,7 @@
 		</div>
 		<h6 class="text-sju-50 bg-sju-500 flex-grow p-4 flex items-center dark:bg-sjud-100">
 			<!-- To be worked on upon events register page creation -->
-			<nuxt-link :to="`/events/${event.id}`">{{ dblocalize(event, "name") }}</nuxt-link>
+			<nuxt-link :to="`/events/${event.id}/register`">{{ dblocalize(event, "name") }}</nuxt-link>
 		</h6>
 	</div>
 </template>

@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+import { useAuthStore } from "~~/stores/authStore"
 
 export const useEventStore = defineStore("eventStore", {
 	state: () => ({
@@ -82,6 +83,27 @@ export const useEventStore = defineStore("eventStore", {
 			if (data?.value?.message) {
 				const toast = useToast()
 				toast.success(data?.value?.message)
+				const router = useRouter()
+				const authStore = useAuthStore()
+				router.push(`/${authStore.userType}s/dashboard`)
+			}
+		},
+
+		async attendEvent(id) {
+			const { useMyFetch } = useApiFetch()
+			const { data = {}, refresh } = await useMyFetch(`/events/${id}/attend`, {
+				method: "POST",
+				key: "event",
+			})
+			if (!data?.value) {
+				throw createError({ statusCode: 404, statusMessage: "Event Not Found" })
+			}
+			if (data?.value?.message) {
+				const toast = useToast()
+				toast.success(data?.value?.message)
+				const router = useRouter()
+				const authStore = useAuthStore()
+				router.push(`/${authStore.userType}s/dashboard`)
 			}
 		},
 	},

@@ -15,9 +15,9 @@
 	// Fetch Event
 	await eventStore.fetchEvent(route.params.id)
 
-	// Register to an event
-	const enrollEvent = () => {
-		eventStore.enrollEvent(route.params.id)
+	// Attend to an event
+	const attendEvent = () => {
+		eventStore.attendEvent(route.params.id)
 	}
 
 	// Page meta
@@ -82,6 +82,42 @@
 												}}
 											</td>
 										</tr>
+										<tr class="border-b border-gray-200 dark:border-gray-700">
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ $translate("Event type") }}
+											</td>
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ event.type }}
+											</td>
+										</tr>
+										<tr class="border-b border-gray-200 dark:border-gray-700">
+											<td class="py-4 px-6">{{ $translate("Event category") }}</td>
+											<td class="py-4 px-6">
+												{{ event.category }}
+											</td>
+										</tr>
+										<tr class="border-b border-gray-200 dark:border-gray-700">
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ $translate("Event gender") }}
+											</td>
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ event.gender }}
+											</td>
+										</tr>
+										<tr class="border-b border-gray-200 dark:border-gray-700">
+											<td class="py-4 px-6">{{ $translate("Event location") }}</td>
+											<td class="py-4 px-6">
+												{{ event.location }}
+											</td>
+										</tr>
+										<tr class="border-b border-gray-200 dark:border-gray-700">
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ $translate("Additional info") }}
+											</td>
+											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+												{{ event.summary }}
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -111,39 +147,18 @@
 												colspan="2"
 												v-if="!event.registered"
 											>
-												<FormKit
-													type="form"
-													:actions="false"
-													form-class="flex flex-col sm:flex-row justify-between items-center"
-													@submit="enrollEvent"
-												>
-													<FormKit
-														type="checkbox"
-														:label="$translate('TermsAgreement')"
-														:validation-label="$translate('acceptance')"
-														validation="required|accepted"
-														:classes="{
-															wrapper: {
-																'formkit-wrapper': false,
-																'w-full flex items-center': true,
-															},
-															inner: 'mx-3',
-														}"
-													/>
-													<button type="submit" class="btn-primary">
-														{{ $translate("Register") }}
-													</button>
-												</FormKit>
-											</td>
-											<td class="py-4 px-6 bg-sju-500 dark:bg-gray-800" colspan="2" v-else>
-												<b class="text-sju-50">{{
-													$translate("Already registered in event")
-												}}</b>
+												<b class="text-sju-50">{{ $translate("Not registered in event") }}</b>
 												<nuxt-link
 													class="mx-2 hover:underline transition-all"
-													to="/volunteers/dashboard"
-													>{{ $translate("Enrolled events") }}</nuxt-link
+													:to="`/events/${event.id}/register`"
+													>{{ $translate("Register") }}</nuxt-link
 												>
+											</td>
+
+											<td class="py-4 px-6 bg-sju-500 dark:bg-gray-800" colspan="2" v-else>
+												<button type="submit" class="btn-primary" @click="attendEvent">
+													{{ $translate("Attend") }}
+												</button>
 											</td>
 										</tr>
 									</tbody>

@@ -62,14 +62,18 @@
 								class="border-b border-gray-200 dark:border-gray-700"
 							>
 								<td class="py-4 px-6">{{ i + 1 }}</td>
-								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">{{ dblocalize(event, "name") }}</td>
+								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+									<nuxt-link :to="`/events/${event.id}/register`">
+										{{ dblocalize(event, "name") }}
+									</nuxt-link>
+								</td>
 								<td class="py-4 px-6">{{ formattedDate(event.date_from) }}</td>
 								<td class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
 									<div v-if="event.volunteers.includes(authStore.userData.id)">
 										<b>{{ $translate("Registered") }}</b>
 									</div>
 									<div v-else>
-										<nuxt-link :to="`/events/${event.id}`">
+										<nuxt-link :to="`/events/${event.id}/register`">
 											<button class="btn-primary">
 												{{ $translate("Register") }}
 											</button>
@@ -114,7 +118,11 @@
 								class="border-b border-gray-200 dark:border-gray-700"
 							>
 								<td class="py-4 px-6">{{ i + 1 }}</td>
-								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">{{ dblocalize(event, "name") }}</td>
+								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
+									<nuxt-link :to="`/events/${event.id}/register`">
+										{{ dblocalize(event, "name") }}
+									</nuxt-link>
+								</td>
 								<td class="py-4 px-6">{{ formattedDate(event.date_from) }}</td>
 								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-80">
 									{{ coursePrices[event.price].label }}
