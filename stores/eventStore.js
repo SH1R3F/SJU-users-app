@@ -73,37 +73,46 @@ export const useEventStore = defineStore("eventStore", {
 
 		async enrollEvent(id) {
 			const { useMyFetch } = useApiFetch()
-			const { data = {}, refresh } = await useMyFetch(`/events/${id}`, {
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/events/${id}`, {
 				method: "POST",
 				key: "event",
 			})
-			if (!data?.value) {
-				throw createError({ statusCode: 404, statusMessage: "Event Not Found" })
-			}
+			const toast = useToast()
 			if (data?.value?.message) {
-				const toast = useToast()
 				toast.success(data?.value?.message)
 				const router = useRouter()
 				const authStore = useAuthStore()
 				router.push(`/${authStore.userType}s/dashboard`)
+			}
+			if (error?.value?.response?.status === 422) {
+				toast.error(error.value?.data?.message)
 			}
 		},
 
 		async attendEvent(id) {
 			const { useMyFetch } = useApiFetch()
-			const { data = {}, refresh } = await useMyFetch(`/events/${id}/attend`, {
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/events/${id}/attend`, {
 				method: "POST",
 				key: "event",
 			})
-			if (!data?.value) {
-				throw createError({ statusCode: 404, statusMessage: "Event Not Found" })
-			}
+			const toast = useToast()
 			if (data?.value?.message) {
 				const toast = useToast()
 				toast.success(data?.value?.message)
 				const router = useRouter()
 				const authStore = useAuthStore()
 				router.push(`/${authStore.userType}s/dashboard`)
+			}
+			if (error?.value?.response?.status === 422) {
+				toast.error(error.value?.data?.message)
 			}
 		},
 	},
