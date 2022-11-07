@@ -126,5 +126,43 @@ export const useAuthStore = defineStore("authStore", {
 
 			router.push(redirectTo)
 		},
+
+		/**
+		 * Forgot password methods
+		 */
+		async sendForgotPasswordLink(body) {
+			const { useMyFetch } = useApiFetch()
+			const { data, error } = await useMyFetch(`/forgot-password/${body.userType}`, {
+				key: "forgot-password",
+				method: "POST",
+				body,
+			})
+
+			// On success
+			if (data?.value) {
+				const toast = useToast()
+				toast.success(data?.value.message)
+			}
+
+			return { error }
+		},
+		async resetPassword(body) {
+			const { useMyFetch } = useApiFetch()
+			const { data, error } = await useMyFetch(`/reset-password/${body.userType}`, {
+				key: "forgot-password",
+				method: "POST",
+				body,
+			})
+
+			// On success
+			if (data?.value) {
+				const toast = useToast()
+				const router = useRouter()
+				toast.success(data?.value.message)
+				router.push(`/${body.userType}s/auth/login`)
+			}
+
+			return { error }
+		},
 	},
 })

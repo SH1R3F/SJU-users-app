@@ -179,6 +179,8 @@
 	"Please verify your email": "يجب تفعيل البريد الإلكتروني.",
 	"Email has been verified successfully": "تم تفعيل البريد الإلكتروني بنجاح.",
 	"Resend verification email": "إعادة إرسال بريد التفعيل",
+	"Forgot password": "نسيت كلمة المرور",
+	"Reset password": "إعادة تعيين كلمة المرور",
 
 	"/***************************** Months **********************/": "",
 	"January": "يناير",

@@ -84,15 +84,19 @@
 								:validation-label="$translate('Password')"
 							/>
 
-							<span
-								v-if="resend_verification"
-								class="text-sju-50 text-sm cursor-pointer"
-								@click="resendVerification"
-								>{{ $translate("Resend verification email") }}</span
-							>
-							<!-- <a href="https://sju.org.sa/volunteers/forget_password" class="text-muted form-text"
-								>نسيت كلمة المرور؟</a
-							> -->
+							<template v-if="resend_verification">
+								<span class="text-sju-50 text-sm cursor-pointer" @click="resendVerification">
+									{{ $translate("Resend verification email") }}
+								</span>
+							</template>
+							<template v-else>
+								<nuxt-link
+									to="/volunteers/auth/forget_password"
+									class="text-sju-50 text-sm cursor-pointer"
+								>
+									{{ $translate("Forgot password") }}
+								</nuxt-link>
+							</template>
 
 							<div class="text-end">
 								<button type="submit" class="btn-primary">
