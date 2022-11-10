@@ -1,5 +1,13 @@
 import { useToast as useToastOriginal } from "vue-toastification"
 
 export const useToast = () => {
-	return useToastOriginal()
+	if (process.client) {
+		return useToastOriginal()
+	}
+	return {
+		success: () => {},
+		error: () => {},
+		info: () => {},
+		warning: () => {},
+	}
 }

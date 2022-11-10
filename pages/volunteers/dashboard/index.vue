@@ -1,10 +1,12 @@
 <script setup>
 	import { storeToRefs } from "pinia"
 	import { useAuthStore } from "~~/stores/authStore"
+	import { useEventStore } from "~~/stores/eventStore"
 	import { useVolunteerStore } from "~~/stores/volunteerStore"
 	import CibZoom from "~icons/cib/zoom"
 	import CiYoutube from "~icons/ci/youtube"
 	import MdiCertificate from "~icons/mdi/certificate"
+	import EpFailed from "~icons/ep/failed"
 
 	const volunteerStore = useVolunteerStore()
 	// Fetching user events
@@ -25,6 +27,11 @@
 			return date >= today
 		}
 	})
+
+	const eventStore = useEventStore()
+	const getCertificate = async (id) => {
+		await eventStore.getCertificate(id)
+	}
 
 	const { $i18n } = useNuxtApp()
 	// Page Meta
@@ -127,7 +134,7 @@
 								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-80">
 									{{ coursePrices[event.price].label }}
 								</td>
-								<td class="py-4 px-6 flex gap-3">
+								<td class="py-4 px-6 flex gap-3 justify-center [&>div]:cursor-pointer">
 									<!-- If event is upcoming show zoom link if exists -->
 									<nuxt-link v-if="upcoming(event.date_from) && event.zoom" :to="event.zoom">
 										<cib-zoom class="text-2xl text-blue-500" />
@@ -141,9 +148,13 @@
 									</nuxt-link>
 
 									<!-- if you have succeed course show certificate -->
-									<nuxt-link v-if="event.pivot.attendance" to="/">
+									<div v-if="event.pivot.attendance" @click="getCertificate(event.id)">
 										<mdi-certificate />
-									</nuxt-link>
+									</div>
+									<!-- Didn't attend -->
+									<div v-else :title="$translate(`You didn't attend the event`)">
+										<ep-failed />
+									</div>
 								</td>
 							</tr>
 						</template>

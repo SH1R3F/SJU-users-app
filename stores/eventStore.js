@@ -11,6 +11,8 @@ export const useEventStore = defineStore("eventStore", {
 		},
 		event: {},
 		upcomingEvents: [],
+		questionnaire: {},
+		questions: [],
 	}),
 	getters: {
 		getType: (state) => {
@@ -112,6 +114,75 @@ export const useEventStore = defineStore("eventStore", {
 				router.push(`/${authStore.userType}s/dashboard`)
 			}
 			if (error?.value?.response?.status === 422) {
+				toast.error(error.value?.data?.message)
+			}
+		},
+
+		async getCertificate(eventId) {
+			const { useMyFetch } = useApiFetch()
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/events/${eventId}/certificate`, {
+				key: "event-certificate",
+			})
+			const toast = useToast()
+			const router = useRouter()
+			const authStore = useAuthStore()
+
+			if (data?.value) {
+				const { type } = data.value
+				if (type === "questionnaire") {
+					router.push(`/${authStore.userType}s/dashboard/questionnaire/${eventId}/${data.value.id}`)
+				} else if (type === "certificate") {
+					window.location = data.value.certificate
+				}
+			}
+
+			if (error?.value) {
+				toast.error(error.value?.data?.message)
+			}
+		},
+
+		async getQuestionnaire(eventId, questionnaireId) {
+			const { useMyFetch } = useApiFetch()
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/questionnaires/${eventId}/${questionnaireId}`, {
+				key: "event-questionnaire",
+			})
+			const toast = useToast()
+			if (data?.value) {
+				this.questionnaire = data.value.questionnaire
+				this.questions = data.value.questionnaire.questions
+			}
+			if (error.value?.data?.message) {
+				toast.error(error.value?.data?.message)
+			}
+		},
+
+		async submitQuestionnaire(eventId, questionnaireId, questionnaire) {
+			const { useMyFetch } = useApiFetch()
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/questionnaires/${eventId}/${questionnaireId}`, {
+				key: "post-questionnaire",
+				method: "POST",
+				body: {
+					questionnaire,
+				},
+			})
+			const toast = useToast()
+			if (data?.value?.message) {
+				toast.success(data?.value?.message)
+			}
+			if (error.value?.data?.message) {
+				console.log(process)
 				toast.error(error.value?.data?.message)
 			}
 		},
