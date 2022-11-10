@@ -185,6 +185,11 @@
 	"Forgot password": "Forgot password",
 	"Reset password": "Reset password",
 
+	"/*************************** Subscribers ********************/": "",
+	"Login subscribers": "Login subscribers",
+	"Register new subscriber": "Register new subscriber",
+	"You can register as a new subscriber from this link": "You can register as a new subscriber from this link",
+
 	"/***************************** Months **********************/": "",
 	"January": "January",
 	"February": "February",

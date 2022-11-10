@@ -145,14 +145,22 @@
 						<!-- Trainees -->
 						<div class="flex-1 py-16 text-center border rounded-md dark:border-sjud-200 dark:text-gray-300">
 							<div class="text-2xl pb-8">{{ $translate("Subscribers") }}</div>
-							<a class="block px-4 mb-2" href="#" data-modal-toggle="loginModal">
+							<nuxt-link
+								class="block px-4 mb-2"
+								to="/subscribers/auth/login"
+								data-modal-toggle="loginModal"
+							>
 								<button
 									class="bg-sju-200 text-white w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl hover:bg-sju-50 transition-all"
 								>
 									تسجيل دخول
 								</button>
-							</a>
-							<nuxt-link class="block px-4" to="/subscribers/register" data-modal-toggle="loginModal">
+							</nuxt-link>
+							<nuxt-link
+								class="block px-4"
+								to="/subscribers/auth/register"
+								data-modal-toggle="loginModal"
+							>
 								<button
 									class="bg-white text-sju-200 w-full py-2 m-0 rounded-md shadow-lg hover:shadow-xl dark:bg-sjud-200 transition-all"
 									data-modal-toggle="loginModal"

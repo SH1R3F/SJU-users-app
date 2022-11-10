@@ -79,7 +79,7 @@
 					<!-- Section title -->
 					<div class="flex justify-between items-center">
 						<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $translate("Events") }}</h2>
-						<a href="#" class="text-sju-50 text-sm">{{ $translate("More") }}</a>
+						<nuxt-link to="/events" class="text-sju-50 text-sm">{{ $translate("More") }}</nuxt-link>
 					</div>
 					<!-- Section title -->
 

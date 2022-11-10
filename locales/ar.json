@@ -187,6 +187,11 @@
 	"Forgot password": "نسيت كلمة المرور",
 	"Reset password": "إعادة تعيين كلمة المرور",
 
+	"/*************************** Subscribers ********************/": "",
+	"Login subscribers": "دخول المشتركين",
+	"Register new subscriber": "تسجيل مشترك جديد",
+	"You can register as a new subscriber from this link": "يمكنك التسجيل كمشترك جديد من خلال الرابط التالي",
+
 	"/***************************** Months **********************/": "",
 	"January": "يناير",
 	"February": "فبراير",
