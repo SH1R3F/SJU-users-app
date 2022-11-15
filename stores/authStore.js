@@ -139,6 +139,58 @@ export const useAuthStore = defineStore("authStore", {
 			return { error }
 		},
 
+		async registerMember(member) {
+			const { useMyFetch } = useApiFetch()
+			const router = useRouter()
+			const redirectTo = `/members/`
+
+			const { data, error } = await useMyFetch("/members/register", {
+				key: "register-member",
+				method: "POST",
+				body: member,
+			})
+
+			// On success
+			if (data?.value) {
+				// Redirect to login page.. Because he first needs to verify email!
+				const toast = useToast()
+				const { $i18n } = useNuxtApp()
+				toast.success(data?.value.message)
+				toast.success($i18n.translate("Please verify your mobile"))
+				router.push(`/members/auth/verify?mobile=${member.contactInfo.mobile}`)
+			}
+
+			return { error }
+		},
+
+		async loginMember(member) {
+			const { useMyFetch } = useApiFetch()
+			const router = useRouter()
+			const redirectTo = `/members/`
+
+			const { data, error } = await useMyFetch("/members/login", {
+				key: "login-member",
+				method: "POST",
+				body: member,
+			})
+
+			// On success
+			if (data?.value) {
+				this.authenticated = true
+				this.userData = data.value.userData
+				this.userType = "member"
+				this.accessToken = data.value.accessToken
+
+				// Save to cookie
+				useCookie("access-token").value = data.value.accessToken
+
+				// Redirect to dashboard
+				router.push(redirectTo)
+			}
+
+			return { error }
+		},
+
 		async resendVerification(resend_url) {
 			if (resend_url) {
 				const { useMyFetch } = useApiFetch()

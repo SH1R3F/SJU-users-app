@@ -77,7 +77,13 @@
 							type="text"
 							name="fname_ar"
 							id="fname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('fname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('fname')"
@@ -87,7 +93,13 @@
 							type="text"
 							name="sname_ar"
 							id="sname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('sname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('sname')"
@@ -97,7 +109,13 @@
 							type="text"
 							name="tname_ar"
 							id="tname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('tname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('tname')"
@@ -107,7 +125,13 @@
 							type="text"
 							name="lname_ar"
 							id="lname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('lname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('lname')"
@@ -118,7 +142,13 @@
 					<!-- Name fields (English) -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('fname')} (${$translate('In English')})`"
 							name="fname_en"
@@ -128,7 +158,13 @@
 							:validation-label="$translate('fname')"
 						/>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('sname')} (${$translate('In English')})`"
 							name="sname_en"
@@ -138,7 +174,13 @@
 							:validation-label="$translate('sname')"
 						/>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('tname')} (${$translate('In English')})`"
 							name="tname_en"
@@ -148,7 +190,13 @@
 							:validation-label="$translate('tname')"
 						/>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('lname')} (${$translate('In English')})`"
 							name="lname_en"

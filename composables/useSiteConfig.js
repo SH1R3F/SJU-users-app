@@ -108,23 +108,23 @@ export default () => {
 		],
 
 		branches: [
-			{ label: $i18n.translate("Mecca"), value: 0 },
-			{ label: $i18n.translate("Medina"), value: 1 },
-			{ label: $i18n.translate("Al Ahsaa"), value: 2 },
-			{ label: $i18n.translate("Jubail"), value: 3 },
-			{ label: $i18n.translate("Dammam"), value: 4 },
-			{ label: $i18n.translate("Hael"), value: 5 },
-			{ label: $i18n.translate("Hafr Al-Baten"), value: 6 },
-			{ label: $i18n.translate("Riyadh"), value: 7 },
-			{ label: $i18n.translate("Al-Qusaim"), value: 8 },
-			{ label: $i18n.translate("Al Bahah"), value: 9 },
-			{ label: $i18n.translate("Al Jawf"), value: 10 },
-			{ label: $i18n.translate("Northern borders"), value: 11 },
-			{ label: $i18n.translate("Aseer"), value: 12 },
-			{ label: $i18n.translate("Jazan"), value: 13 },
-			{ label: $i18n.translate("Najran"), value: 14 },
-			{ label: $i18n.translate("Tabuk"), value: 15 },
-			{ label: $i18n.translate("Al Taeif"), value: 16 },
+			{ label: $i18n.translate("Mecca"), value: 1 },
+			{ label: $i18n.translate("Medina"), value: 2 },
+			{ label: $i18n.translate("Al Ahsaa"), value: 3 },
+			{ label: $i18n.translate("Jubail"), value: 4 },
+			{ label: $i18n.translate("Dammam"), value: 5 },
+			{ label: $i18n.translate("Hael"), value: 6 },
+			{ label: $i18n.translate("Hafr Al-Baten"), value: 7 },
+			{ label: $i18n.translate("Riyadh"), value: 8 },
+			{ label: $i18n.translate("Al-Qusaim"), value: 9 },
+			{ label: $i18n.translate("Al Bahah"), value: 10 },
+			{ label: $i18n.translate("Al Jawf"), value: 11 },
+			{ label: $i18n.translate("Northern borders"), value: 12 },
+			{ label: $i18n.translate("Aseer"), value: 13 },
+			{ label: $i18n.translate("Jazan"), value: 14 },
+			{ label: $i18n.translate("Najran"), value: 15 },
+			{ label: $i18n.translate("Tabuk"), value: 16 },
+			{ label: $i18n.translate("Al Taeif"), value: 17 },
 		],
 
 		mobileCodes: [
@@ -371,6 +371,12 @@ export default () => {
 		ticketStatus: [
 			{ label: $i18n.translate("Solved"), value: 0 },
 			{ label: $i18n.translate("Open"), value: 1 },
+		],
+
+		membershipTypes: [
+			{ label: $i18n.translate("fulltime_member"), value: 0 },
+			{ label: $i18n.translate("parttime_member"), value: 1 },
+			{ label: $i18n.translate("affiliate_member"), value: 2 },
 		],
 	}
 }
