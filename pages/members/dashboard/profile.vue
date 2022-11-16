@@ -1,7 +1,7 @@
 <script setup>
 	import { storeToRefs } from "pinia"
 	import { useAuthStore } from "~~/stores/authStore"
-	import { useSubscriberStore } from "~~/stores/subscriberStore"
+	import { useMemberStore } from "~~/stores/memberStore"
 
 	const { genders, countries, cities, qualifications, mobileCodes } = useSiteConfig()
 
@@ -11,10 +11,10 @@
 
 	const profileData = ref({})
 	const toast = useToast()
-	const subscriberStore = useSubscriberStore()
+	const memberStore = useMemberStore()
 
-	const updateSubscriber = async (body, node) => {
-		const { error } = await subscriberStore.updateSubscriber(body)
+	const updateMember = async (body, node) => {
+		const { error } = await memberStore.updateMember(body)
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
@@ -24,7 +24,7 @@
 	}
 
 	const updatePassword = async (body, node) => {
-		const { error } = await subscriberStore.updatePassword(body)
+		const { error } = await memberStore.updatePassword(body)
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
@@ -41,7 +41,7 @@
 	})
 
 	definePageMeta({
-		middleware: "subscriber",
+		middleware: "member",
 	})
 </script>
 
@@ -54,7 +54,7 @@
 				v-model="profileData"
 				v-if="Object.keys(userData).length"
 				:actions="false"
-				@submit="updateSubscriber"
+				@submit="updateMember"
 			>
 				<!-- Full name fields -->
 				<div class="flex flex-wrap gap-y-5 mb-8">

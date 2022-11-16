@@ -24,6 +24,10 @@
 			await eventStore.submitQuestionnaire(eventId, questionnaireId, questionnaireData.value)
 		}
 	}
+
+	definePageMeta({
+		middleware: "subscriber",
+	})
 </script>
 
 <template>

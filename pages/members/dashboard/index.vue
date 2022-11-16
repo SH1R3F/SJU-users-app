@@ -2,16 +2,16 @@
 	import { storeToRefs } from "pinia"
 	import { useAuthStore } from "~~/stores/authStore"
 	import { useEventStore } from "~~/stores/eventStore"
-	import { useSubscriberStore } from "~~/stores/subscriberStore"
+	import { useMemberStore } from "~~/stores/memberStore"
 	import CibZoom from "~icons/cib/zoom"
 	import CiYoutube from "~icons/ci/youtube"
 	import MdiCertificate from "~icons/mdi/certificate"
 	import EpFailed from "~icons/ep/failed"
 
-	const subscriberStore = useSubscriberStore()
+	const memberStore = useMemberStore()
 	// Fetching user events
-	const { upcomingEvents, enrolledEvents } = storeToRefs(subscriberStore)
-	await subscriberStore.fetchEvents()
+	const { upcomingEvents, enrolledEvents } = storeToRefs(memberStore)
+	await memberStore.fetchEvents()
 
 	const { dblocalize } = useLocalization()
 	const { formattedDate } = useFormating()
@@ -41,7 +41,7 @@
 	})
 
 	definePageMeta({
-		middleware: "subscriber",
+		middleware: "member",
 	})
 </script>
 
@@ -76,7 +76,7 @@
 								</td>
 								<td class="py-4 px-6">{{ formattedDate(event.date_from) }}</td>
 								<td class="py-3 px-6 bg-gray-50 dark:bg-gray-800">
-									<div v-if="event.subscribers.includes(authStore.userData.id)">
+									<div v-if="event.members.includes(authStore.userData.id)">
 										<b>{{ $translate("Registered") }}</b>
 									</div>
 									<div v-else>

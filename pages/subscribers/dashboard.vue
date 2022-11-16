@@ -14,7 +14,7 @@
 				<div class="flex gap-5 flex-col sm:flex-row">
 					<div class="w-full sm:w-3/12">
 						<img
-							:src="userData?.avatar"
+							:src="userData?.avatar || '/images/user.png'"
 							class="rounded-full mx-auto mb-5 h-40 w-40 lg:h-52 lg:w-52 object-cover object-top shadow-lg"
 						/>
 						<h6 class="text-sju-50 text-center font-bold">{{ dblocalize(userData, "fullName") }}</h6>

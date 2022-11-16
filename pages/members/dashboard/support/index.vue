@@ -17,7 +17,7 @@
 	})
 
 	definePageMeta({
-		middleware: "subscriber",
+		middleware: "member",
 	})
 </script>
 
@@ -46,7 +46,7 @@
 							<tr v-for="(ticket, i) in tickets" class="border-b border-gray-200 dark:border-gray-700">
 								<td class="py-4 px-6">{{ i + 1 }}</td>
 								<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
-									<nuxt-link :to="`/subscribers/dashboard/support/${ticket.id}`" class="text-sju-50">
+									<nuxt-link :to="`/members/dashboard/support/${ticket.id}`" class="text-sju-50">
 										{{ ticket.title }}
 									</nuxt-link>
 								</td>
@@ -71,7 +71,7 @@
 				</table>
 			</div>
 			<div class="text-end">
-				<nuxt-link to="/subscribers/dashboard/support/create" class="btn-primary inline-block text-sm"
+				<nuxt-link to="/members/dashboard/support/create" class="btn-primary inline-block text-sm"
 					>+ {{ $translate("New ticket") }}</nuxt-link
 				>
 			</div>

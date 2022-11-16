@@ -43,7 +43,7 @@
 	<div>
 		<div class="container my-20">
 			<div class="card">
-				<h5 class="card-title">{{ $translate("Forgot password") }}</h5>
+				<h5 class="card-title">{{ $translate("Mobile verification") }}</h5>
 
 				<!-- Mobile -->
 				<div class="my-4">
@@ -72,7 +72,7 @@
 
 					<div class="flex justify-between mt-8">
 						<button class="btn-primary" type="submit">{{ $translate("Send") }}</button>
-						<nuxt-link to="/volunteers/auth/login" class="btn">{{ $translate("login") }}</nuxt-link>
+						<nuxt-link to="/members/auth/login" class="btn">{{ $translate("login") }}</nuxt-link>
 					</div>
 				</FormKit>
 			</div>

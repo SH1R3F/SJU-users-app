@@ -39,7 +39,7 @@
 		title,
 	})
 	definePageMeta({
-		middleware: "subscriber",
+		middleware: "member",
 	})
 </script>
 

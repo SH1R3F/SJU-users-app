@@ -10,14 +10,20 @@
 
 	const { $i18n } = useNuxtApp()
 	const toast = useToast()
+	const router = useRouter()
 	const resend_verification = ref(null)
 
-	const loginSubscriber = async (body, node) => {
+	const loginMember = async (body, node) => {
 		const authStore = useAuthStore()
-		const { error } = await authStore.loginSubscriber(body)
+		const { error } = await authStore.loginMember(body)
 		// On errors
 		if (error?.value?.response?.status === 400) {
 			node.setErrors(error.value?.data)
+
+			if (error.value?.data?.status === "verify_mobile") {
+				router.push(error.value?.data?.resend)
+			}
+
 			if (error.value?.data?.resend) {
 				resend_verification.value = error.value?.data?.resend
 			}
@@ -32,7 +38,7 @@
 	}
 
 	// Page Meta
-	const title = $i18n.translate("Login subscribers")
+	const title = $i18n.translate("Login members")
 	useHead({
 		title,
 	})
@@ -49,12 +55,12 @@
 					<div class="form">
 						<h5 class="form-title">{{ title }}</h5>
 
-						<FormKit type="form" :actions="false" @submit="loginSubscriber">
+						<FormKit type="form" :actions="false" @submit="loginMember">
 							<FormKit
-								:label="$translate('Email')"
-								type="email"
-								name="email"
-								id="email"
+								:label="$translate('National ID')"
+								type="number"
+								name="national_id"
+								id="national_id"
 								:classes="{
 									outer: 'mb-3',
 									wrapper: {
@@ -62,9 +68,9 @@
 										'formkit-wrapper': false,
 									},
 								}"
-								:placeholder="$translate('Email')"
-								validation="required:trim|email"
-								:validation-label="$translate('Email')"
+								:placeholder="$translate('National ID')"
+								validation="required:trim|number|length:10,10"
+								:validation-label="$translate('National ID')"
 							/>
 
 							<FormKit
@@ -86,12 +92,12 @@
 
 							<template v-if="resend_verification">
 								<span class="text-sju-50 text-sm cursor-pointer" @click="resendVerification">
-									{{ $translate("Resend verification email") }}
+									{{ $translate("Resend verification") }}
 								</span>
 							</template>
 							<template v-else>
 								<nuxt-link
-									to="/subscribers/auth/forget_password"
+									to="/members/auth/forget_password"
 									class="text-sju-50 text-sm cursor-pointer"
 								>
 									{{ $translate("Forgot password") }}
@@ -111,9 +117,9 @@
 					<div class="text-center">
 						<fa-solid-user-edit class="text-5xl mb-7 text-sju-100 m-auto" />
 
-						<h4 class="text-sju-200 mb-2">{{ $translate("Register new subscriber") }}</h4>
-						<p class="mb-4">{{ $translate("You can register as a new subscriber from this link") }}</p>
-						<nuxt-link to="/subscribers/auth/register" class="text-sju-50">{{
+						<h4 class="text-sju-200 mb-2">{{ $translate("Register new member") }}</h4>
+						<p class="mb-4">{{ $translate("You can register as a new member from this link") }}</p>
+						<nuxt-link to="/members/auth/register" class="text-sju-50">{{
 							$translate("Click here to register")
 						}}</nuxt-link>
 					</div>

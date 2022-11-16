@@ -17,12 +17,7 @@ export default () => {
 			credentials: "include",
 			async onResponseError({ request, response, options }) {
 				if (response.status === 403) {
-					// UnAuthenticate User On Front and Redirect
-
-					// Route to be redirected when unauthenticated error occurs
-					// router.push("/volunteers/register")
-					console.log("You are not authenticated")
-					console.log(authStore.accessToken)
+					// If unauthenticated log him out and login again!
 				}
 			},
 			...options,
