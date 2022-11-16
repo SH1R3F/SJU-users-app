@@ -209,6 +209,41 @@ export const useAuthStore = defineStore("authStore", {
 			}
 		},
 
+		async resendMobileVerification(mobile) {
+			const { useMyFetch } = useApiFetch()
+			const { data, error } = await useMyFetch(`/members/resend/${mobile}`, {
+				key: "resend-mobile-verification",
+				method: "POST",
+			})
+
+			// On success
+			if (data?.value) {
+				const toast = useToast()
+				toast.success(data?.value.message)
+			}
+
+			return { error }
+		},
+
+		async verifyMobile(mobile, code) {
+			const { useMyFetch } = useApiFetch()
+			const { data, error } = await useMyFetch(`/members/verify/${mobile}/${code}`, {
+				key: "verify-mobile",
+				method: "POST",
+			})
+			const toast = useToast()
+			const router = useRouter()
+
+			// On success
+			if (data?.value) {
+				toast.success(data?.value.message)
+				// Redirect to login
+				router.push("/members/auth/login")
+			}
+
+			return { error }
+		},
+
 		async logout() {
 			const { useMyFetch } = useApiFetch()
 			const router = useRouter()

@@ -243,6 +243,11 @@
 	"membership_agreement": "I acknowledge that I am aware of all the terms and conditions, and I pledge that all the data provided is correct personal data and I bear all responsibility towards that",
 	"You have to choose member type": "You have to choose member type",
 	"Please verify your mobile": "Please verify your mobile",
+	"Verification code": "Verification code",
+	"Resend verification code": "Resend verification code",
+	"Submit": "Submit",
+	"Mobile provided is not correct": "Mobile provided is not correct",
+	"Mobile verification": "Mobile verification",
 
 	"/***************************** Months **********************/": "",
 	"January": "January",

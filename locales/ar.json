@@ -245,6 +245,11 @@
 	"membership_agreement": "وأقر باطلاعي والتزامي بكافة الشروط والأحكام ، كما وأتعهد بأن جميع البيانات المقدمة هي بيانات شخصية صحيحة وأتحمل كافة المسئولية إتجاه ذلك",
 	"You have to choose member type": "يجب اختيار نوع العضوية",
 	"Please verify your mobile": "يجب تفعيل رقم الهاتف",
+	"Verification code": "كود التفعيل",
+	"Resend verification code": "إعادة إرسال كود التفعيل",
+	"Submit": "إرسال",
+	"Mobile provided is not correct": "رقم الهاتف غير صحيح",
+	"Mobile verification": "تفعيل رقم الهاتف",
 
 	"/***************************** Months **********************/": "",
 	"January": "يناير",
