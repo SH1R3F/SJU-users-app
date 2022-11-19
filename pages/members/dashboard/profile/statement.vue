@@ -8,6 +8,11 @@
 	const authStore = useAuthStore()
 	const { userData } = storeToRefs(authStore)
 
+	// User only required to upload a profile statement if his type is affilite member
+	if (userData.value.subscription?.type !== 3) {
+		useRouter().push("/members/dashboard/profile")
+	}
+
 	const updateStatement = async (form, node) => {
 		// Converting to FormData as we gotta upload a file
 		const body = new FormData()

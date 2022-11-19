@@ -16,10 +16,26 @@
 	})
 
 	const progress = ref(50)
+	if (userData.value.subscription?.type !== 3) {
+		progress.value = progress.value + 10
+	}
+	if (userData.value.newspaper_type !== 2) {
+		progress.value = progress.value + 10
+	}
+
 	progress.value += userData.value.avatar ? 10 : 0
 	progress.value += userData.value.national_image ? 10 : 0
-	progress.value += userData.value.employer_letter ? 10 : 0
-	progress.value += userData.value.newspaper_license ? 10 : 0
+
+	// Employer letter is required when subscription type is 3 [Affiliate member]!
+	if (userData.value.subscription?.type === 3) {
+		progress.value += userData.value.employer_letter ? 10 : 0
+	}
+
+	// Newspaper license is required only for E-newspaper
+	if (userData.value.newspaper_type === 2) {
+		progress.value += userData.value.newspaper_license ? 10 : 0
+	}
+
 	progress.value += hasExperiences.value ? 10 : 0
 
 	const { $i18n } = useNuxtApp()
@@ -104,7 +120,8 @@
 							</nuxt-link>
 						</td>
 					</tr>
-					<tr class="border-b border-gray-200 dark:border-gray-700">
+					<!-- Employer letter is required when subscription type is 3 [Affiliate member]! -->
+					<tr class="border-b border-gray-200 dark:border-gray-700" v-if="userData.subscription?.type === 3">
 						<td class="py-4 px-6">
 							<span
 								:class="{
@@ -124,7 +141,8 @@
 							</nuxt-link>
 						</td>
 					</tr>
-					<tr class="border-b border-gray-200 dark:border-gray-700">
+					<!-- Newspaper license is required only for E-newspaper -->
+					<tr class="border-b border-gray-200 dark:border-gray-700" v-if="userData.newspaper_type === 2">
 						<td class="py-4 px-6">
 							<span
 								:class="{

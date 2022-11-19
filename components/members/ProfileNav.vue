@@ -1,4 +1,10 @@
 <script setup>
+	import { storeToRefs } from "pinia"
+	import { useAuthStore } from "~~/stores/authStore"
+
+	const authStore = useAuthStore()
+	const { userData } = storeToRefs(authStore)
+
 	const { active } = defineProps(["active"])
 </script>
 
@@ -41,6 +47,7 @@
 			{{ $translate("ID image") }}
 		</nuxt-link>
 		<nuxt-link
+			v-if="userData.subscription?.type === 3"
 			to="/members/dashboard/profile/statement"
 			class="cursor-pointer inline-block text-sju-50 text-sm px-4 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
 			:class="{ active: active === 'statement' }"
@@ -48,6 +55,7 @@
 			{{ $translate("Job letter") }}
 		</nuxt-link>
 		<nuxt-link
+			v-if="userData.newspaper_type === 2"
 			to="/members/dashboard/profile/license"
 			class="cursor-pointer inline-block text-sju-50 text-sm px-4 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
 			:class="{ active: active === 'license' }"

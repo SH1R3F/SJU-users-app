@@ -8,6 +8,11 @@
 	const authStore = useAuthStore()
 	const { userData } = storeToRefs(authStore)
 
+	// Required only for members with newspaper types === E-newspaper
+	if (userData.value.newspaper_type !== 2) {
+		useRouter().push("/members/dashboard/profile")
+	}
+
 	const updateLicense = async (form, node) => {
 		// Converting to FormData as we gotta upload a file
 		const body = new FormData()
