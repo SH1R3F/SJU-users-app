@@ -2,6 +2,7 @@ import { useAuthStore } from "~~/stores/authStore"
 
 export default () => {
 	const { $i18n } = useNuxtApp()
+	const toast = useToast()
 
 	const useMyFetch = async (url, options = {}) => {
 		const authStore = useAuthStore()
@@ -17,7 +18,8 @@ export default () => {
 			credentials: "include",
 			async onResponseError({ request, response, options }) {
 				if (response.status === 403) {
-					// If unauthenticated log him out and login again!
+					// Ask him to refresh the page!
+					toast.error($i18n.translate("Error occured. Refresh the page and if problem resists contact us!"))
 				}
 			},
 			...options,

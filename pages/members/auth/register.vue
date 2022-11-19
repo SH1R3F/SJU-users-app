@@ -291,7 +291,7 @@
 													:options="[
 														{
 															label: $translate('fulltime_member'),
-															value: 0,
+															value: 1,
 														},
 													]"
 													:validation-label="$translate('fulltime_member')"
@@ -340,7 +340,7 @@
 													:options="[
 														{
 															label: $translate('parttime_member'),
-															value: 1,
+															value: 2,
 														},
 													]"
 													:validation-label="$translate('parttime_member')"
@@ -388,7 +388,7 @@
 													:options="[
 														{
 															label: $translate('affiliate_member'),
-															value: 2,
+															value: 3,
 														},
 													]"
 													:validation-label="$translate('affiliate_member')"
@@ -413,7 +413,7 @@
 											</td>
 											<td class="py-4 px-6 bg-gray-50 dark:bg-gray-800">
 												<span class="md:text-xl text-sju-50 font-bold"
-													>200 {{ $translate("Riyal") }}&nbsp;
+													>150 {{ $translate("Riyal") }}&nbsp;
 												</span>
 												<span class="font-bold text-xs">{{ $translate("Annual") }}*</span>
 											</td>
@@ -1178,7 +1178,7 @@
 								</div>
 								<!-- ID and mobile -->
 
-								<!-- Membership type and branc -->
+								<!-- Membership type and branch -->
 								<div class="row-of-two mb-7">
 									<div class="flex flex-col sm:flex-row items-center">
 										<label class="font-bold w-full sm:w-6/12">
@@ -1201,7 +1201,7 @@
 										</div>
 									</div>
 								</div>
-								<!-- Membership type and branc -->
+								<!-- Membership type and branch -->
 
 								<!-- Name fields (Arabic) -->
 								<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 my-4">

@@ -59,19 +59,19 @@
 				<!-- Full name fields -->
 				<div class="flex flex-wrap gap-y-5 mb-8">
 					<div class="w-6/12 sm:w-3/12">
-						<label>الاسم الأول</label>
+						<label>{{ $translate("fname") }}</label>
 						<h4 class="text-sju-50">{{ dblocalize(userData, "fname") }}</h4>
 					</div>
 					<div class="w-6/12 sm:w-3/12">
-						<label>اسم الأب</label>
+						<label>{{ $translate("sname") }}</label>
 						<h4 class="text-sju-50">{{ dblocalize(userData, "sname") }}</h4>
 					</div>
 					<div class="w-6/12 sm:w-3/12">
-						<label>اسم الجد</label>
+						<label>{{ $translate("tname") }}</label>
 						<h4 class="text-sju-50">{{ dblocalize(userData, "tname") }}</h4>
 					</div>
 					<div class="w-6/12 sm:w-3/12">
-						<label>اسم العائلة</label>
+						<label>{{ $translate("lname") }}</label>
 						<h4 class="text-sju-50">{{ dblocalize(userData, "lname") }}</h4>
 					</div>
 				</div>

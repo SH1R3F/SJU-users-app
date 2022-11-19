@@ -374,9 +374,16 @@ export default () => {
 		],
 
 		membershipTypes: [
-			{ label: $i18n.translate("fulltime_member"), value: 0 },
-			{ label: $i18n.translate("parttime_member"), value: 1 },
-			{ label: $i18n.translate("affiliate_member"), value: 2 },
+			{ label: $i18n.translate("fulltime_member"), value: 1, price: 250 },
+			{ label: $i18n.translate("parttime_member"), value: 2, price: 200 },
+			{ label: $i18n.translate("affiliate_member"), value: 3, price: 150 },
+		],
+
+		levels: [
+			{ label: $i18n.translate("Fair"), value: 0 },
+			{ label: $i18n.translate("Good"), value: 1 },
+			{ label: $i18n.translate("Very good"), value: 2 },
+			{ label: $i18n.translate("Excellent"), value: 3 },
 		],
 	}
 }

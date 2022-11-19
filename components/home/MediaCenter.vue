@@ -4,7 +4,7 @@
 		<div class="container">
 			<div class="flex justify-between items-center">
 				<h2 class="text-sju-50 text-3xl py-4 mb-2">{{ $translate("Media center") }}</h2>
-				<router-link to="/posts" class="text-sju-50 text-sm">{{ $translate("More") }}</router-link>
+				<nuxt-link to="/posts" class="text-sju-50 text-sm">{{ $translate("More") }}</nuxt-link>
 			</div>
 
 			<!-- Posts -->

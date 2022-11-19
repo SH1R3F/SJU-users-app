@@ -26,6 +26,12 @@
 								{{ $translate("Events") }}
 							</nuxt-link>
 							<nuxt-link
+								to="/members/dashboard/membership"
+								class="block p-2 hover:bg-sju-500 transition-all [&.router-link-exact-active]:text-sju-50 [&.router-link-exact-active]:font-bold [&.router-link-exact-active]:bg-sju-500 dark:[&.router-link-exact-active]:bg-sjud-200 dark:hover:bg-sjud-200 dark:text-sjud-400"
+							>
+								{{ $translate("Membership") }}
+							</nuxt-link>
+							<nuxt-link
 								to="/members/dashboard/profile"
 								class="block p-2 hover:bg-sju-500 transition-all [&.router-link-exact-active]:text-sju-50 [&.router-link-exact-active]:font-bold [&.router-link-exact-active]:bg-sju-500 dark:[&.router-link-exact-active]:bg-sjud-200 dark:hover:bg-sjud-200 dark:text-sjud-400"
 							>
