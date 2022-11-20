@@ -246,7 +246,7 @@
 									padding: 3px 0;
 								"
 							>
-								Expiry data &nbsp;&nbsp;&nbsp;&nbsp;
+								Expiry date &nbsp;&nbsp;&nbsp;&nbsp;
 								{{ userData.subscription.end_date }} &nbsp;&nbsp;&nbsp;&nbsp; صلاحية البطاقة
 							</p>
 						</div>
