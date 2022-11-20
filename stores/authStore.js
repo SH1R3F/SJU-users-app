@@ -10,6 +10,7 @@ export const useAuthStore = defineStore("authStore", {
 
 	actions: {
 		async initAuth() {
+			const config = useRuntimeConfig()
 			try {
 				const token = useCookie("access-token").value || null
 				if (token) {
@@ -17,7 +18,7 @@ export const useAuthStore = defineStore("authStore", {
 					this.accessToken = token
 					// Lets try fetch user with $fetch
 					const res = await $fetch("/auth/user", {
-						baseURL: "http://127.0.0.1:8000/api",
+						baseURL: config.public.baseURL,
 						headers: {
 							Authorization: `Bearer ${token}`,
 						},

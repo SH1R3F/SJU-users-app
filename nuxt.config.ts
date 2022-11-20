@@ -27,6 +27,7 @@ export default defineNuxtConfig({
 		public: {
 			baseURL: "http://127.0.0.1:8000/api/",
 			apiBase: "http://127.0.0.1:8000/api/",
+			homeBase: "http://127.0.0.1:8000",
 		},
 	},
 	vue: {

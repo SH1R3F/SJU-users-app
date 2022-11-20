@@ -3,7 +3,7 @@
 	import { useAuthStore } from "~~/stores/authStore"
 	import { useMemberStore } from "~~/stores/memberStore"
 
-	const { genders, countries } = useSiteConfig()
+	const { genders, nationalities } = useSiteConfig()
 
 	const authStore = useAuthStore()
 	const { userData } = storeToRefs(authStore)
@@ -177,7 +177,7 @@
 					<label class="w-full sm:w-2/12">{{ $translate("Nationality") }}</label>
 					<div class="w-full sm:w-10/12">
 						<h5 class="text-sju-50">
-							{{ countries.filter((c) => c.value === userData.nationality)[0].label }}
+							{{ nationalities.find((c) => c.value === userData.nationality).label }}
 						</h5>
 					</div>
 				</div>

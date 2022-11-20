@@ -3,11 +3,12 @@ import { useAuthStore } from "~~/stores/authStore"
 export default () => {
 	const { $i18n } = useNuxtApp()
 	const toast = useToast()
+	const config = useRuntimeConfig()
 
 	const useMyFetch = async (url, options = {}) => {
 		const authStore = useAuthStore()
 		return useFetch(url, {
-			baseURL: "http://127.0.0.1:8000/api",
+			baseURL: config.public.baseURL,
 			headers: {
 				"Accept-Language": $i18n.locale,
 				Accept: "application/json",
@@ -27,7 +28,7 @@ export default () => {
 	}
 
 	const useFetchCookies = async () => {
-		await $fetch("http://127.0.0.1:8000/sanctum/csrf-cookie", {
+		await $fetch(`${config.public.homeBase}/sanctum/csrf-cookie`, {
 			credentials: "include", // Allow browser to handle cookies
 		})
 	}
