@@ -11,12 +11,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
 	complete = complete && authStore.userData.national_image
 
 	// Employer letter is required when subscription type is 3 [Affiliate member]!
-	if (authStore.userData?.subscription?.type === 3) {
+	if (authStore.userData?.subscription?.type == 3) {
 		complete = complete && authStore.userData.employer_letter
 	}
 
 	// Newspaper license is required only for E-newspaper
-	if (authStore.userData?.newspaper_type === 2) {
+	if (authStore.userData?.newspaper_type == 2) {
 		complete = complete && authStore.userData.newspaper_license
 	}
 

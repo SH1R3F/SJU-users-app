@@ -22,16 +22,6 @@
 		}
 	}
 
-	const updatePassword = async (body, node) => {
-		const { error } = await memberStore.updatePassword(body)
-		// On errors
-		if (error?.value?.response?.status === 400) {
-			node.setErrors(error.value?.data)
-		} else if (error?.value?.response?.status === 422) {
-			toast.error(error.value?.data?.message)
-		}
-	}
-
 	const dateChanged = (e) => {
 		profileData.value[e.target.name] = e.target.value
 	}

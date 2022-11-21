@@ -2,8 +2,11 @@
 	import IcSharpCheck from "~icons/ic/sharp-check"
 	import { getNode, createMessage } from "@formkit/core"
 	import { useAuthStore } from "~~/stores/authStore"
+	import { useHomeStore } from "~~/stores/homeStore"
+	const toast = useToast()
+	const { $i18n } = useNuxtApp()
 
-	const { branches, genders, countries, membershipTypes } = useSiteConfig()
+	const { branches, genders, nationalities, membershipTypes } = useSiteConfig()
 	const memberData = ref({})
 	const step = ref("registration")
 	const steps = reactive({
@@ -83,9 +86,17 @@
 	const authStore = useAuthStore()
 	const registerMember = async (body, node) => {
 		node.clearErrors()
+		// Show loading screen
+		useHomeStore().loading = true
 		const { error } = await authStore.registerMember(body)
-		if (error?.value) {
+		// Hide loading screen
+		useHomeStore().loading = false
+
+		if (error?.value?.response?.status == 400) {
 			node.setErrors(error.value.data)
+			toast.error($i18n.translate("Error in one or more fields"))
+		} else if (error?.value) {
+			toast.error($i18n.translate("Error in registration"))
 		}
 	}
 
@@ -101,7 +112,6 @@
 		memberData.value.memberInfo[e.target.name] = e.target.value
 	}
 
-	const { $i18n } = useNuxtApp()
 	// Page Meta
 	const title = $i18n.translate("Register new member")
 	useHead({
@@ -135,9 +145,9 @@
 						<li
 							v-for="(value, key) in steps"
 							class="w-full text-center sm:w-auto sm:text-start cursor-pointer inline-block text-sju-50 text-sm px-5 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
-							:class="{ active: step === key }"
+							:class="{ active: step == key }"
 							@click="step = key"
-							:data-step-active="step === key"
+							:data-step-active="step == key"
 							:data-step-valid="value.valid"
 						>
 							{{ $translate(value?.label) }}
@@ -151,7 +161,7 @@
 					</ul>
 
 					<div class="pt-10">
-						<section v-show="step === 'registration'">
+						<section v-show="step == 'registration'">
 							<FormKit type="group" id="registration" name="registration">
 								<h5 class="form-title">
 									{{ $translate("Terms and policies") }}
@@ -230,7 +240,7 @@
 							</FormKit>
 						</section>
 
-						<section v-show="step === 'contactInfo'">
+						<section v-show="step == 'contactInfo'">
 							<FormKit id="contactInfo" type="group" name="contactInfo">
 								<!-- Mobile -->
 								<div class="flex flex-col md:flex-row items-center" data-family="text">
@@ -267,7 +277,7 @@
 							</FormKit>
 						</section>
 
-						<section v-show="step === 'membershipTypes'">
+						<section v-show="step == 'membershipTypes'">
 							<FormKit id="membershipTypes" type="group" name="membershipTypes">
 								<table class="w-full text-gray-500 dark:text-gray-400 mb-6">
 									<thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
@@ -452,7 +462,7 @@
 								></FormKit>
 
 								<FormKit
-									v-if="memberData.membershipTypes.branch === 8"
+									v-if="memberData.membershipTypes.branch == 8"
 									:label="$translate('Delivery method')"
 									:help="
 										$translate(
@@ -491,8 +501,8 @@
 
 								<FormKit
 									v-if="
-										memberData.membershipTypes.branch === 8 &&
-										memberData.membershipTypes.delivery_method === 2
+										memberData.membershipTypes.branch == 8 &&
+										memberData.membershipTypes.delivery_method == 2
 									"
 									:label="$translate('Delivery Address')"
 									type="text"
@@ -513,7 +523,7 @@
 								></FormKit>
 							</FormKit>
 						</section>
-						<section v-show="step === 'memberInfo'">
+						<section v-show="step == 'memberInfo'">
 							<FormKit id="memberInfo" type="group" name="memberInfo">
 								<div class="row-of-two mb-7">
 									<div class="flex flex-col sm:flex-row items-center">
@@ -796,7 +806,7 @@
 										},
 										outer: 'mb-3',
 									}"
-									:options="countries"
+									:options="nationalities"
 									name="nationality"
 									:validation-label="$translate('Nationality')"
 									validation="required"
@@ -1101,7 +1111,7 @@
 							</FormKit>
 						</section>
 
-						<section v-show="step === 'loginInfo'">
+						<section v-show="step == 'loginInfo'">
 							<FormKit id="loginInfo" type="group" name="loginInfo">
 								<div class="flex flex-col sm:flex-row items-center w-full md:w-1/2 mb-7">
 									<label class="font-bold w-full sm:w-6/12">
@@ -1154,7 +1164,7 @@
 							</FormKit>
 						</section>
 
-						<section v-show="step === 'review'">
+						<section v-show="step == 'review'">
 							<FormKit id="review" type="group" name="review">
 								<!-- ID and mobile -->
 								<div class="row-of-two mb-7">
@@ -1305,7 +1315,7 @@
 									<label class="font-bold w-6/12 md:w-3/12">{{ $translate("Nationality") }}</label>
 									<h5 class="inline">
 										{{
-											countries.find((c) => c.__original == memberData.memberInfo.nationality)
+											nationalities.find((c) => c.value == memberData.memberInfo.nationality)
 												.label
 										}}
 									</h5>
@@ -1483,14 +1493,14 @@
 
 						<!-- Steps Navigation -->
 						<div class="flex justify-between items-center mt-10">
-							<button class="btn" :disabled="step === 'registration'" @click.prevent="setStep(-1)">
+							<button class="btn" :disabled="step == 'registration'" @click.prevent="setStep(-1)">
 								{{ $translate("Prev") }}
 							</button>
 							<button class="btn" v-if="step !== 'review'" @click.prevent="setStep(1)">
 								{{ $translate("Next") }}
 							</button>
 							<!-- Submit button -->
-							<button class="btn-primary" type="submit" v-if="step === 'review'">
+							<button class="btn-primary" type="submit" v-if="step == 'review'">
 								{{ $translate("Register") }}
 							</button>
 						</div>

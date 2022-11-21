@@ -11,6 +11,7 @@
 	const memberStore = useMemberStore()
 	// Fetching user events
 	const { upcomingEvents, enrolledEvents } = storeToRefs(memberStore)
+
 	await memberStore.fetchEvents()
 
 	const { dblocalize } = useLocalization()

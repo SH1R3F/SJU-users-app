@@ -5,6 +5,7 @@ export const useMemberStore = defineStore("memberStore", {
 	state: () => ({
 		upcomingEvents: [],
 		enrolledEvents: [],
+		notifications: [],
 	}),
 	actions: {
 		async fetchEvents() {
@@ -20,6 +21,19 @@ export const useMemberStore = defineStore("memberStore", {
 			}
 			this.upcomingEvents = data.value.upcomingEvents
 			this.enrolledEvents = data.value.enrolledEvents
+		},
+		async fetchNotifications() {
+			const { useMyFetch } = useApiFetch()
+			const { data, error, refresh } = await useMyFetch("/members/notifications", {
+				key: "member-notifications",
+			})
+			if (error?.value?.response?.status) {
+				throw createError({
+					statusCode: error?.value?.response?.status,
+					statusMessage: error?.value?.response?.statusText,
+				})
+			}
+			this.notifications = data.value.notifications
 		},
 
 		updateMember: async (body) => {

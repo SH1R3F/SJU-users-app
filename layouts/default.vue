@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<layout-loading v-show="loading" />
+		<form-loading v-show="useHomeStore().loading" />
 		<NuxtLoadingIndicator />
 		<layout-minibar />
 		<layout-header />

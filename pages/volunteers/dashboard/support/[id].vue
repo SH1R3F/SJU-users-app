@@ -50,7 +50,11 @@
 							}"
 						>
 							<img
-								:src="msgGroup[0].sender === 1 ? '/images/support.png' : authStore.userData.avatar"
+								:src="
+									msgGroup[0].sender === 1
+										? '/images/support.png'
+										: authStore.userData.avatar || '/images/user.png'
+								"
 								v-if="msgGroup[0].sender === 2"
 								class="object-cover h-8 w-8 rounded-full"
 							/>
@@ -72,7 +76,11 @@
 							</div>
 
 							<img
-								:src="msgGroup[0].sender === 1 ? '/images/support.png' : authStore.userData.avatar"
+								:src="
+									msgGroup[0].sender === 1
+										? '/images/support.png'
+										: authStore.userData.avatar || '/images/user.png'
+								"
 								v-if="msgGroup[0].sender === 1"
 								class="object-cover h-8 w-8 rounded-full"
 							/>

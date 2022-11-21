@@ -24,9 +24,9 @@
 
 		const { error } = await supportStore.sendMessage(id, body)
 		// On errors
-		if (error?.value?.response?.status === 400) {
+		if (error?.value?.response?.status == 400) {
 			node.setErrors(error.value?.data)
-		} else if (error?.value?.response?.status === 422) {
+		} else if (error?.value?.response?.status == 422) {
 			toast.error(error.value?.data?.message)
 		} else if (!error?.value) {
 			message.value = {}
@@ -54,13 +54,17 @@
 							v-for="msgGroup in getMessages"
 							class="flex mb-4"
 							:class="{
-								'justify-end': msgGroup[0].sender === 1,
-								'justify-start': msgGroup === 2,
+								'justify-end': msgGroup[0].sender == 1,
+								'justify-start': msgGroup == 2,
 							}"
 						>
 							<img
-								:src="msgGroup[0].sender === 1 ? '/images/support.png' : authStore.userData.avatar"
-								v-if="msgGroup[0].sender === 2"
+								:src="
+									msgGroup[0].sender == 1
+										? '/images/support.png'
+										: authStore.userData.avatar || '/images/user.png'
+								"
+								v-if="msgGroup[0].sender == 2"
 								class="object-cover h-8 w-8 rounded-full"
 							/>
 
@@ -68,8 +72,8 @@
 								<div
 									class="mt-1"
 									:class="{
-										'bubble-other': msgGroup[0].sender === 1,
-										'bubble-me': msgGroup[0].sender === 2,
+										'bubble-other': msgGroup[0].sender == 1,
+										'bubble-me': msgGroup[0].sender == 2,
 									}"
 									v-for="msg in msgGroup"
 								>
@@ -81,8 +85,12 @@
 							</div>
 
 							<img
-								:src="msgGroup[0].sender === 1 ? '/images/support.png' : authStore.userData.avatar"
-								v-if="msgGroup[0].sender === 1"
+								:src="
+									msgGroup[0].sender == 1
+										? '/images/support.png'
+										: authStore.userData.avatar || '/images/user.png'
+								"
+								v-if="msgGroup[0].sender == 1"
 								class="object-cover h-8 w-8 rounded-full"
 							/>
 						</div>

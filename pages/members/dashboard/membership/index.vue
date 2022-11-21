@@ -62,7 +62,7 @@
 				<tbody class="text-center">
 					<tr class="border-b border-gray-200 dark:border-gray-700">
 						<td class="py-4 px-6">
-							{{ membershipTypes.find((c) => c.value === userData.subscription.type).label }}
+							{{ membershipTypes.find((c) => c.value == userData.subscription.type).label }}
 						</td>
 						<td class="py-4 px-6">
 							{{ userData.subscription.start_date || "#" }}
@@ -72,7 +72,7 @@
 						</td>
 						<td class="py-4 px-6">
 							<!-- MEMBERSHIP STATUS -->
-							<template v-if="userData.approved === -2">
+							<template v-if="userData.approved == -2">
 								<span class="underline cursor-pointer" @click="refusalReason">
 									{{ $translate("Refused") }}
 								</span>
@@ -81,20 +81,20 @@
 									{{ $translate("Resend") }}
 								</button>
 							</template>
-							<template v-else-if="userData.approved === null && !userData.membership_number">
+							<template v-else-if="userData.approved == null && !userData.membership_number">
 								<button class="btn-primary" @click="memberStore.applyMembership()">
 									{{ $translate("Request membership") }}
 								</button>
 							</template>
-							<template v-else-if="userData.active === -1 && userData.approved === 0">
+							<template v-else-if="userData.active == -1 && userData.approved == 0">
 								{{ $translate("Waiting branch approval") }}
 							</template>
-							<template v-else-if="userData.active === -1 && userData.approved === 1">
+							<template v-else-if="userData.active == -1 && userData.approved == 1">
 								{{ $translate("Waiting admin approval") }}
 							</template>
-							<template v-else-if="userData.active === 1 && userData.approved === 1">
+							<template v-else-if="userData.active == 1 && userData.approved == 1">
 								<!-- Member is active. Now we go through payment checks  -->
-								<template v-if="userData.subscription.status === 1">
+								<template v-if="userData.subscription.status == 1">
 									<template v-if="new Date(userData.subscription.end_date) < new Date()">
 										<!-- Subscription Ended! -->
 										{{ $translate("Subscription ended") }}
@@ -140,7 +140,7 @@
 						<h5 class="font-bold">{{ $translate("Complete payment process") }}</h5>
 						<p class="text-sm">
 							{{ $translate("Subscribing to membership") }}:
-							{{ membershipTypes.find((c) => c.value === userData.subscription.type).label }}
+							{{ membershipTypes.find((c) => c.value == userData.subscription.type).label }}
 						</p>
 					</div>
 					<nuxt-link to="/members/dashboard/membership/pay" class="btn-primary">

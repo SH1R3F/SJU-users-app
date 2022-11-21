@@ -1,13 +1,14 @@
 <script setup>
 	import { useAuthStore } from "~~/stores/authStore"
+	const toast = useToast()
 
 	const submitForgot = async (body, node) => {
 		const authStore = useAuthStore()
-		const { error } = await authStore.sendForgotPasswordLink({ ...body, userType: "volunteer" })
+		const { error } = await authStore.sendForgotPasswordLink({ ...body, userType: "member" })
 		// On errors
-		if (error?.value?.response?.status === 400) {
+		if (error?.value?.response?.status == 400) {
 			node.setErrors(error.value?.data)
-		} else if (error?.value?.response?.status === 422) {
+		} else if (error?.value?.response?.status == 422) {
 			toast.error(error.value?.data?.message)
 		}
 	}
@@ -50,7 +51,7 @@
 
 					<div class="flex justify-between mt-8">
 						<button class="btn-primary" type="submit">{{ $translate("Send") }}</button>
-						<nuxt-link to="/volunteers/auth/login" class="btn">{{ $translate("login") }}</nuxt-link>
+						<nuxt-link to="/members/auth/login" class="btn">{{ $translate("login") }}</nuxt-link>
 					</div>
 				</FormKit>
 			</div>

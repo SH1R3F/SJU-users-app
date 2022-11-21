@@ -1,5 +1,6 @@
 <script setup>
 	import { useAuthStore } from "~~/stores/authStore"
+	import { useHomeStore } from "~~/stores/homeStore"
 
 	const route = useRoute()
 	const router = useRouter()
@@ -15,19 +16,23 @@
 	}
 
 	const resendVerification = async () => {
+		useHomeStore().loading = true
 		const authStore = useAuthStore()
 		const { error } = await authStore.resendMobileVerification(mobile)
 		if (error.value) {
 			toast.error(error.value.data?.message)
 		}
+		useHomeStore().loading = false
 	}
 
 	const verify = async (body, node) => {
+		useHomeStore().loading = true
 		const authStore = useAuthStore()
 		const { error } = await authStore.verifyMobile(mobile, body.code)
 		if (error.value) {
 			toast.error(error.value.data?.message)
 		}
+		useHomeStore().loading = false
 	}
 
 	// Page Meta

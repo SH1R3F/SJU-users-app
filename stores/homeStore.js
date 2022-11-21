@@ -7,6 +7,7 @@ export const useHomeStore = defineStore("homeStore", {
 		studio: [],
 		events: [],
 		stats: [],
+		loading: false,
 	}),
 	actions: {
 		// Fetch home objects

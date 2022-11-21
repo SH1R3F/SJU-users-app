@@ -17,7 +17,8 @@
 							<div class="md:w-2/3 order-lg-last">
 								<img
 									class="object-cover h-56 md:h-96 w-full"
-									:src="post.photos[0]"
+									:src="post.photos[0] || '/images/noimage.jpg'"
+									onerror="this.src='/images/noimage.jpg'"
 									:alt="dblocalize(post, 'title')"
 								/>
 							</div>

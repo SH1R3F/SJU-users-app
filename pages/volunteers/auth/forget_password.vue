@@ -1,5 +1,6 @@
 <script setup>
 	import { useAuthStore } from "~~/stores/authStore"
+	const toast = useToast()
 
 	const submitForgot = async (body, node) => {
 		const authStore = useAuthStore()
