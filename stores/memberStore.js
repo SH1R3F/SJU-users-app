@@ -140,6 +140,23 @@ export const useMemberStore = defineStore("memberStore", {
 
 			return { error }
 		},
+		async updateContract(form) {
+			const { useMyFetch } = useApiFetch()
+			const { data, error } = await useMyFetch("/members/profile/contract", {
+				key: "update-contract",
+				method: "POST",
+				body: form,
+			})
+
+			// On success
+			if (data?.value) {
+				const toast = useToast()
+				toast.success(data?.value?.message)
+				useAuthStore().userData.job_contract = data?.value?.image
+			}
+
+			return { error }
+		},
 		async updateLicense(form) {
 			const { useMyFetch } = useApiFetch()
 			const { data, error } = await useMyFetch("/members/profile/license", {

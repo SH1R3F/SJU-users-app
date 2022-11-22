@@ -15,20 +15,21 @@
 		)
 	})
 
-	const progress = ref(50)
-	if (userData.value.subscription?.type !== 3) {
+	const progress = ref(40)
+	if (userData.value.newspaper_type != 2) {
 		progress.value = progress.value + 10
 	}
-	if (userData.value.newspaper_type !== 2) {
+	if (userData.value.subscription.type != 3) {
 		progress.value = progress.value + 10
 	}
 
 	progress.value += userData.value.avatar ? 10 : 0
 	progress.value += userData.value.national_image ? 10 : 0
+	progress.value += userData.value.employer_letter ? 10 : 0
 
-	// Employer letter is required when subscription type is 3 [Affiliate member]!
-	if (userData.value.subscription?.type === 3) {
-		progress.value += userData.value.employer_letter ? 10 : 0
+	// Job contract is required when subscription type is 3 [Affiliate member]!
+	if (userData.value.subscription?.type == 3) {
+		progress.value += userData.value.job_contract ? 10 : 0
 	}
 
 	// Newspaper license is required only for E-newspaper
@@ -120,8 +121,7 @@
 							</nuxt-link>
 						</td>
 					</tr>
-					<!-- Employer letter is required when subscription type is 3 [Affiliate member]! -->
-					<tr class="border-b border-gray-200 dark:border-gray-700" v-if="userData.subscription?.type === 3">
+					<tr class="border-b border-gray-200 dark:border-gray-700">
 						<td class="py-4 px-6">
 							<span
 								:class="{
@@ -136,6 +136,28 @@
 								to="/members/dashboard/profile/statement"
 								class="btn-primary"
 								v-if="!userData.employer_letter"
+							>
+								{{ $translate("Upload") }}
+							</nuxt-link>
+						</td>
+					</tr>
+
+					<!-- Job contract is required when subscription type is 3 [Affiliate member]! -->
+					<tr class="border-b border-gray-200 dark:border-gray-700" v-if="userData.subscription?.type === 3">
+						<td class="py-4 px-6">
+							<span
+								:class="{
+									'line-through text-sju-50': userData.job_contract,
+								}"
+							>
+								{{ $translate("Job contract") }}
+							</span>
+						</td>
+						<td class="py-4 px-6">
+							<nuxt-link
+								to="/members/dashboard/profile/contract"
+								class="btn-primary"
+								v-if="!userData.job_contract"
 							>
 								{{ $translate("Upload") }}
 							</nuxt-link>

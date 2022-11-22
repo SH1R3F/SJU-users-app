@@ -258,6 +258,7 @@
 	"Exp. & fields": "Exp. & fields",
 	"ID image": "ID image",
 	"Job letter": "Job statement",
+	"Job contract": "Job contract",
 	"Newspaper license": "Newspaper license",
 	"Experiences": "Experiences",
 	"Add": "Add",
@@ -333,6 +334,10 @@
 	"PHD degree": "PHD degree",
 
 	"/**************************** Countries ****************************/": "",
+	"Samoa": "Samoa",
+	"North Korea": "North Korea",
+	"Benin": "Benin",
+	"Aruba": "Aruba",
 	"Saudi Arabia": "Saudi Arabia",
 	"Afghanistan": "Afghanistan",
 	"Albania": "Albania",

@@ -32,7 +32,7 @@ export const useAuthStore = defineStore("authStore", {
 				}
 				return true
 			} catch (e) {
-				console.log("Caught err1: ", e)
+				useCookie("access-token").value = null
 			}
 		},
 

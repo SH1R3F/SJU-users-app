@@ -47,12 +47,19 @@
 			{{ $translate("ID image") }}
 		</nuxt-link>
 		<nuxt-link
-			v-if="userData.subscription?.type === 3"
 			to="/members/dashboard/profile/statement"
 			class="cursor-pointer inline-block text-sju-50 text-sm px-4 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
 			:class="{ active: active === 'statement' }"
 		>
 			{{ $translate("Job letter") }}
+		</nuxt-link>
+		<nuxt-link
+			v-if="userData.subscription?.type === 3"
+			to="/members/dashboard/profile/contract"
+			class="cursor-pointer inline-block text-sju-50 text-sm px-4 py-3 hover:bg-gray-200 hover:text-sju-50 [&.active]:text-white [&.active]:bg-sju-50 transition dark:text-white dark:hover:bg-sjud-300"
+			:class="{ active: active === 'contract' }"
+		>
+			{{ $translate("Job contract") }}
 		</nuxt-link>
 		<nuxt-link
 			v-if="userData.newspaper_type === 2"

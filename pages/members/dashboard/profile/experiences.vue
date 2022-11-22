@@ -22,8 +22,9 @@
 	const experiences = ref(userData.value.experiences_and_fields.experiences)
 	const addExperience = () => {
 		if (
-			experiences.value[experiences.value.length - 1]?.name != "" &&
-			experiences.value[experiences.value.length - 1]?.years != null
+			experiences.value.length === 0 ||
+			(experiences.value[experiences.value.length - 1]?.name != "" &&
+				experiences.value[experiences.value.length - 1]?.years != null)
 		) {
 			experiences.value.push({
 				name: "",
@@ -56,8 +57,9 @@
 	const languages = ref(userData.value.experiences_and_fields.languages)
 	const addLanguage = () => {
 		if (
-			languages.value[languages.value.length - 1]?.name != "" &&
-			languages.value[languages.value.length - 1]?.level != null
+			languages.value.length === 0 ||
+			(languages.value[languages.value.length - 1]?.name != "" &&
+				languages.value[languages.value.length - 1]?.level != null)
 		) {
 			languages.value.push({
 				name: "",

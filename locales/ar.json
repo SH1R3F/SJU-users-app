@@ -260,6 +260,7 @@
 	"Exp. & fields": "الخبرات والمجالات",
 	"ID image": "صورة الهوية",
 	"Job letter": "إفادة العمل",
+	"Job contract": "عقد عمل",
 	"Newspaper license": "ترخيص الصحيفة",
 	"Experiences": "الخبرات",
 	"Years": "السنوات",
@@ -491,6 +492,10 @@
 	"Zimbabwe": "زمبابوي",
 
 	"/**************************** Nationalities ****************************/": "",
+	"Samoa": "ساموا",
+	"North Korea": "كوريا الشمالية",
+	"Benin": "بنين",
+	"Aruba": "اروبا",
 	"Saudi Arabian": "سعودي",
 	"Afghan": "أفغاني",
 	"Albanian": "ألباني",

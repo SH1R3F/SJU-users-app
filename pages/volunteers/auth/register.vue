@@ -8,7 +8,8 @@
 	})
 
 	const { $i18n } = useNuxtApp()
-	const { genders, countries, cities, branches, qualifications, howKnewUs, mobileCodes } = useSiteConfig()
+	const { genders, countries, nationalities, cities, branches, qualifications, howKnewUs, mobileCodes } =
+		useSiteConfig()
 
 	const volunteerData = ref({})
 
@@ -68,7 +69,7 @@
 								'formkit-wrapper': false,
 							},
 						}"
-					/>
+					></FormKit>
 
 					<!-- Name fields (Arabic) -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
@@ -87,7 +88,7 @@
 							:placeholder="$translate('fname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('fname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('sname')} (${$translate('In Arabic')})`"
 							type="text"
@@ -103,7 +104,7 @@
 							:placeholder="$translate('sname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('sname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('tname')} (${$translate('In Arabic')})`"
 							type="text"
@@ -119,7 +120,7 @@
 							:placeholder="$translate('tname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('tname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('lname')} (${$translate('In Arabic')})`"
 							type="text"
@@ -135,7 +136,7 @@
 							:placeholder="$translate('lname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('lname')"
-						/>
+						></FormKit>
 					</div>
 					<!-- Name fields -->
 
@@ -156,7 +157,7 @@
 							:placeholder="$translate('fname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('fname')"
-						/>
+						></FormKit>
 						<FormKit
 							:classes="{
 								wrapper: {
@@ -172,7 +173,7 @@
 							:placeholder="$translate('sname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('sname')"
-						/>
+						></FormKit>
 						<FormKit
 							:classes="{
 								wrapper: {
@@ -188,7 +189,7 @@
 							:placeholder="$translate('tname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('tname')"
-						/>
+						></FormKit>
 						<FormKit
 							:classes="{
 								wrapper: {
@@ -204,7 +205,7 @@
 							:placeholder="$translate('lname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('lname')"
-						/>
+						></FormKit>
 					</div>
 					<!-- Name fields -->
 
@@ -224,7 +225,7 @@
 							},
 							inner: 'm-3',
 						}"
-					/>
+					></FormKit>
 					<!-- Gender -->
 
 					<div
@@ -246,7 +247,7 @@
 							:validation-label="$translate('Country')"
 							validation="required"
 							outer-class="mb-3"
-						/>
+						></FormKit>
 						<!-- Country -->
 
 						<!-- City -->
@@ -262,7 +263,7 @@
 							:validation-label="$translate('City')"
 							validation="required"
 							outer-class="mb-3"
-						/>
+						></FormKit>
 						<!-- City -->
 
 						<!-- Nationality -->
@@ -273,11 +274,11 @@
 								selectIcon: { $el: null },
 							}"
 							outer-class="mb-3"
-							:options="countries"
+							:options="nationalities"
 							name="nationality"
 							:validation-label="$translate('Nationality')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- Nationality -->
 
 						<!-- Qualification -->
@@ -292,7 +293,7 @@
 							name="qualification"
 							:validation-label="$translate('Qualification')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- Qualification -->
 					</div>
 
@@ -306,7 +307,7 @@
 							name="national_id"
 							:validation-label="$translate('National ID')"
 							validation="required:trim|number|length:10"
-						/>
+						></FormKit>
 						<!-- National id -->
 
 						<!-- Marital status -->
@@ -318,7 +319,7 @@
 							name="marital_status"
 							:validation-label="$translate('Martial status')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Marital status -->
 
 						<!-- Adminstrative area -->
@@ -330,7 +331,7 @@
 							name="adminstrative_area"
 							:validation-label="$translate('Adminstrative area')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Adminstrative area -->
 					</div>
 
@@ -344,7 +345,7 @@
 							name="governorate"
 							:validation-label="$translate('Governorate')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Governorate -->
 
 						<!-- National address -->
@@ -357,7 +358,7 @@
 							id="national_address"
 							:validation-label="$translate('National address')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- National address -->
 
 						<!-- Job title -->
@@ -369,7 +370,7 @@
 							name="job_title"
 							:validation-label="$translate('Job title')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Job title -->
 
 						<!-- Address -->
@@ -381,7 +382,7 @@
 							name="address"
 							:validation-label="$translate('Address')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Address -->
 					</div>
 
@@ -459,7 +460,7 @@
 						]"
 						:validation-label="$translate('Volunteering fields')"
 						validation="required"
-					/>
+					></FormKit>
 					<!-- Volunteering Fields -->
 
 					<div class="row-of-two">
@@ -478,7 +479,7 @@
 							name="education"
 							:validation-label="$translate('Educational level')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- Educational -->
 
 						<!-- experiences -->
@@ -496,7 +497,7 @@
 							}"
 							:validation-label="$translate('Volunteering experiences')"
 							validation="required:trim"
-						/>
+						></FormKit>
 						<!-- experiences -->
 					</div>
 
@@ -519,7 +520,7 @@
 							name="branch"
 							:validation-label="$translate('Branch')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- Branch -->
 
 						<!-- HowKnew -->
@@ -540,7 +541,7 @@
 							name="hearabout"
 							:validation-label="$translate('How do you know the authority?')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- HowKnew -->
 					</div>
 
@@ -561,7 +562,7 @@
 							name="email"
 							:validation-label="$translate('Email')"
 							validation="required:trim|email"
-						/>
+						></FormKit>
 						<!-- Email -->
 
 						<!-- Mobile -->
@@ -579,14 +580,14 @@
 									:placeholder="$translate('Mobile')"
 									validation="required:trim|number"
 									:validation-label="$translate('Mobile')"
-								/>
+								></FormKit>
 								<span class="prepend">
 									<FormKit
 										type="mySelect"
 										name="mobile_key"
 										:options="mobileCodes"
 										style="box-shadow: none"
-									/>
+									></FormKit>
 								</span>
 							</div>
 						</div>
@@ -610,7 +611,7 @@
 							name="password"
 							:validation-label="$translate('Password')"
 							validation="required:trim|length:6"
-						/>
+						></FormKit>
 						<!-- Password -->
 
 						<!-- Password Confirmation -->
@@ -629,7 +630,7 @@
 							name="password_confirm"
 							:validation-label="$translate('Password confirmation')"
 							validation="required:trim|confirm"
-						/>
+						></FormKit>
 						<!-- Password Confirmation -->
 					</div>
 
@@ -646,7 +647,7 @@
 								},
 								inner: 'mx-3',
 							}"
-						/>
+						></FormKit>
 					</div>
 
 					<div class="text-end">
