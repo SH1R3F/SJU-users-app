@@ -14,6 +14,14 @@
 	"Volunteers": "Volunteers",
 	"Close": "Close",
 	"Details": "Read more →",
+
+	"/*============================= Certificate validation": "=============================*/",
+	"Validate certificate": "Validate certificate",
+	"Please enter the code written on the certificate": "Please enter the code written on the certificate",
+	"Code": "Code",
+	"Validate": "Validate",
+
+	"/*================================== HOME PAGE TRANSLATIONS": "==================================*/",
 	"about_authority": "About authority",
 	"about_authority_description": "The Saudi Journalists Association for Professional Performance in the Kingdom of Saudi Arabia was established according to Article No. 27 of the Press Institutions Law by Royal Decree No. (M / 20) on 05/08/1422 AH, and its regulations were approved at the first meeting of the Association, which was held on the date corresponding to 4/19 / 1425 AH corresponding to 7/7/2004 Minister of Culture and Information, these regulations are in accordance with Resolution No. (M / F / 383) dated 11/8/1425 AH. The establishment of the foundation stems from a real desire to serve membership in the Kingdom of Saudi Arabia.",
 	"Read more": "Read more",

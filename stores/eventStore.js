@@ -166,6 +166,8 @@ export const useEventStore = defineStore("eventStore", {
 
 		async submitQuestionnaire(eventId, questionnaireId, questionnaire) {
 			const { useMyFetch } = useApiFetch()
+			const router = useRouter()
+			const authStore = useAuthStore()
 			const {
 				data = {},
 				error,
@@ -180,9 +182,32 @@ export const useEventStore = defineStore("eventStore", {
 			const toast = useToast()
 			if (data?.value?.message) {
 				toast.success(data?.value?.message)
+				router.push(`/${authStore.userType}s/dashboard`)
 			}
 			if (error.value?.data?.message) {
-				console.log(process)
+				toast.error(error.value?.data?.message)
+			}
+		},
+
+		async validateCertificate(code) {
+			const { useMyFetch } = useApiFetch()
+			const router = useRouter()
+			const authStore = useAuthStore()
+			const {
+				data = {},
+				error,
+				refresh,
+			} = await useMyFetch(`/certificate/${code}`, {
+				key: "validate-certificate",
+			})
+			const toast = useToast()
+			if (data?.value) {
+				const { type } = data.value
+				if (type === "certificate") {
+					window.location = data.value.certificate
+				}
+			}
+			if (error.value?.data?.message) {
 				toast.error(error.value?.data?.message)
 			}
 		},

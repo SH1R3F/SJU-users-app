@@ -620,10 +620,10 @@ export default () => {
 		],
 
 		levels: [
-			{ label: $i18n.translate("Fair"), value: "0" },
-			{ label: $i18n.translate("Good"), value: "1" },
-			{ label: $i18n.translate("Very good"), value: "2" },
-			{ label: $i18n.translate("Excellent"), value: "3" },
+			{ label: $i18n.translate("Fair"), value: "مقبول" },
+			{ label: $i18n.translate("Good"), value: "جيد" },
+			{ label: $i18n.translate("Very good"), value: "جيد جدا" },
+			{ label: $i18n.translate("Excellent"), value: "ممتاز" },
 		],
 	}
 }

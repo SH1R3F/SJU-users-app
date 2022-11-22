@@ -16,7 +16,8 @@
 
 	const questionnaireData = ref({})
 
-	const submitQuestion = async (i) => {
+	const submitQuestion = async (i, question) => {
+		console.log(questionnaireData, i, question)
 		if (steps[i + 1]) {
 			step.value = steps[i + 1]
 		} else {
@@ -76,6 +77,7 @@
 									wrapper: `border-2 border-gray-200 p-2`,
 									inner: 'mx-3',
 								}"
+								validation="required"
 							></FormKit>
 						</div>
 						<div v-else>
@@ -92,7 +94,9 @@
 						</div>
 					</FormKit>
 					<div class="text-end">
-						<button class="btn-primary" @click.prevent="submitQuestion(i)">{{ $translate("Next") }}</button>
+						<button class="btn-primary" @click.prevent="submitQuestion(i, question)">
+							{{ $translate("Next") }}
+						</button>
 					</div>
 				</section>
 			</FormKit>
