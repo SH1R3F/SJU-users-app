@@ -129,7 +129,7 @@
 							</td>
 							<td class="py-2 px-6">
 								<FormKit
-									type="number"
+									type="text"
 									:placeholder="$translate('Years')"
 									:validation-label="$translate('Years')"
 									validation="required"

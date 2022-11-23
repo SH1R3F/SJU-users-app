@@ -29,12 +29,12 @@ export default defineNuxtConfig({
 	runtimeConfig: {
 		// secret serverside variables
 		public: {
-			baseURL: "http://127.0.0.1:8000/api/",
-			apiBase: "http://127.0.0.1:8000/api/",
-			homeBase: "http://127.0.0.1:8000",
-			// baseURL: "https://sju.davidlouis.co/api/",
-			// apiBase: "https://sju.davidlouis.co/api/",
-			// homeBase: "https://sju.davidlouis.co",
+			// baseURL: "http://127.0.0.1:8000/api/",
+			// apiBase: "http://127.0.0.1:8000/api/",
+			// homeBase: "http://127.0.0.1:8000",
+			baseURL: "https://sju.davidlouis.co/api/",
+			apiBase: "https://sju.davidlouis.co/api/",
+			homeBase: "https://sju.davidlouis.co",
 		},
 	},
 	vue: {

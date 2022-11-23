@@ -11,7 +11,9 @@
 								<a href="http://www.media.gov.sa/">{{ $translate("Ministry of Information") }}</a>
 							</li>
 							<li>
-								<a href="http://www.gcam.gov.sa/ar/Pages/default.aspx">{{ $translate("Audiovisual organization") }}</a>
+								<a href="http://www.gcam.gov.sa/ar/Pages/default.aspx">{{
+									$translate("Audiovisual organization")
+								}}</a>
 							</li>
 							<li>
 								<a href="http://www.spa.gov.sa/">{{ $translate("Saudi press agency") }}</a>
@@ -25,7 +27,12 @@
 						<h5 class="text-xl mb-3">{{ $translate("Contact us") }}</h5>
 						<ul>
 							<li class="flex gap-3 mb-3">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.351" viewBox="0 0 22.351 22.351">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="22.351"
+									height="22.351"
+									viewBox="0 0 22.351 22.351"
+								>
 									<g id="email_1_" data-name="email (1)" transform="translate(-0.001 -0.004)">
 										<g id="Group_52" data-name="Group 52" transform="translate(0.001 0.004)">
 											<g id="Group_51" data-name="Group 51" transform="translate(0)">
@@ -51,7 +58,14 @@
 								<a href="mailto:info@sju.org.sa">info@sju.org.sa</a>
 							</li>
 							<li class="flex gap-3 mb-3">
-								<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.35" viewBox="0 0 22.35 18.33">
+								<svg
+									id="Layer_1"
+									data-name="Layer 1"
+									xmlns="http://www.w3.org/2000/svg"
+									width="22.351"
+									height="22.35"
+									viewBox="0 0 22.35 18.33"
+								>
 									<defs></defs>
 
 									<path
@@ -63,7 +77,12 @@
 								<a href="https://twitter.com/sju_ksa" target="_blank">sju_ksa</a>
 							</li>
 							<li class="flex gap-3 mb-3">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.35" viewBox="0 0 22.351 22.35">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="22.351"
+									height="22.35"
+									viewBox="0 0 22.351 22.35"
+								>
 									<g id="call" transform="translate(-1 -1.018)">
 										<g id="Group_54" data-name="Group 54" transform="translate(1 1.018)">
 											<g id="Group_53" data-name="Group 53" transform="translate(0 0)">
@@ -105,7 +124,13 @@
 								0114878555 – 0114878855
 							</li>
 							<li class="flex gap-3 mb-3">
-								<svg id="fax" xmlns="http://www.w3.org/2000/svg" width="22.351" height="22.351" viewBox="0 0 22.351 22.351">
+								<svg
+									id="fax"
+									xmlns="http://www.w3.org/2000/svg"
+									width="22.351"
+									height="22.351"
+									viewBox="0 0 22.351 22.351"
+								>
 									<path
 										id="Path_71"
 										data-name="Path 71"
@@ -229,7 +254,11 @@
 							<nuxt-link class="text-3xl mr-3 rtl:ml-3 rtl:mr-0">
 								<gg-facebook class="inline" />
 							</nuxt-link>
-							<nuxt-link to="https://twitter.com/sju_ksa" target="_blank" class="text-3xl mr-3 rtl:ml-3 rtl:mr-0">
+							<nuxt-link
+								to="https://twitter.com/sju_ksa"
+								target="_blank"
+								class="text-3xl mr-3 rtl:ml-3 rtl:mr-0"
+							>
 								<mdi-twitter class="inline" />
 							</nuxt-link>
 							<nuxt-link class="text-3xl mr-3 rtl:ml-3 rtl:mr-0">
@@ -261,11 +290,21 @@
 								<a href="https://sju.org.sa/contact-us.html">{{ $translate("Call us") }}</a>
 							</li>
 						</ul>
-						<span class="text-xs">{{ $translate("All rights reserved to Saudi Journalists Association") }}</span>
+						<span class="text-xs block mb-1.5">{{
+							$translate("All rights reserved to Saudi Journalists Association")
+						}}</span>
+						<div class="text-xs mb-1.5">
+							{{ $translate("Made with ❤ by:") }}
+							<nuxt-link to="https://github.com/sh1r3f">Sh1r3f</nuxt-link>
+						</div>
 					</div>
 
 					<div>
-						<img src="https://sju.org.sa/assets/themes/new/images/logo.png" :alt="$translate('All rights reserved to Saudi Journalists Association')" class="max-h-20" />
+						<img
+							src="https://sju.org.sa/assets/themes/new/images/logo.png"
+							:alt="$translate('All rights reserved to Saudi Journalists Association')"
+							class="max-h-20"
+						/>
 					</div>
 				</div>
 			</div>
