@@ -3,7 +3,7 @@
 	import { useAuthStore } from "~~/stores/authStore"
 	import { useSubscriberStore } from "~~/stores/subscriberStore"
 
-	const { genders, countries, cities, qualifications, mobileCodes } = useSiteConfig()
+	const { genders, countries, nationalities, cities, qualifications, mobileCodes } = useSiteConfig()
 
 	const authStore = useAuthStore()
 	const { userData } = storeToRefs(authStore)
@@ -81,7 +81,7 @@
 				<div class="flex flex-wrap mb-8" v-if="false">
 					<label class="w-full sm:w-2/12">{{ $translate("Gender") }}</label>
 					<div class="w-full sm:w-10/12">
-						<h5 class="text-sju-50">{{ genders[userData?.gender].label }}</h5>
+						<h5 class="text-sju-50">{{ genders[userData?.gender] && genders[userData?.gender].label }}</h5>
 					</div>
 				</div>
 				<div class="flex flex-wrap mb-8" v-else>
@@ -157,7 +157,12 @@
 				<div class="flex flex-wrap mb-8">
 					<label class="w-full sm:w-2/12">{{ $translate("Nationality") }}</label>
 					<div class="w-full sm:w-10/12">
-						<h5 class="text-sju-50">{{ countries[userData?.nationality].label }}</h5>
+						<h5 class="text-sju-50">
+							{{
+								nationalities.find((n) => n.value == userData?.nationality) &&
+								nationalities.find((n) => n.value == userData?.nationality).label
+							}}
+						</h5>
 					</div>
 				</div>
 				<!-- Nationality -->
