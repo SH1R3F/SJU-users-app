@@ -305,7 +305,6 @@
 														},
 													]"
 													:validation-label="$translate('fulltime_member')"
-													validation="required"
 													:classes="{
 														options: 'flex items-center',
 														option: {
@@ -354,7 +353,6 @@
 														},
 													]"
 													:validation-label="$translate('parttime_member')"
-													validation="required"
 													:classes="{
 														options: 'flex items-center',
 														option: {
@@ -402,7 +400,6 @@
 														},
 													]"
 													:validation-label="$translate('affiliate_member')"
-													validation="required"
 													:classes="{
 														options: 'flex items-center',
 														option: {

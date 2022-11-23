@@ -246,7 +246,13 @@
 							name="country"
 							:validation-label="$translate('Country')"
 							validation="required"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 						></FormKit>
 						<!-- Country -->
 
@@ -262,7 +268,13 @@
 							name="city"
 							:validation-label="$translate('City')"
 							validation="required"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 						></FormKit>
 						<!-- City -->
 
@@ -273,7 +285,13 @@
 							:sections-schema="{
 								selectIcon: { $el: null },
 							}"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							:options="nationalities"
 							name="nationality"
 							:validation-label="$translate('Nationality')"
@@ -288,7 +306,13 @@
 							:sections-schema="{
 								selectIcon: { $el: null },
 							}"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							:options="qualifications"
 							name="qualification"
 							:validation-label="$translate('Qualification')"
@@ -301,7 +325,13 @@
 						<!-- National id -->
 						<FormKit
 							:label="$translate('National ID')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="number"
 							:placeholder="$translate('National ID')"
 							name="national_id"
@@ -313,7 +343,13 @@
 						<!-- Marital status -->
 						<FormKit
 							:label="$translate('Martial status')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('Martial status')"
 							name="marital_status"
@@ -325,7 +361,13 @@
 						<!-- Adminstrative area -->
 						<FormKit
 							:label="$translate('Adminstrative area')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('Adminstrative area')"
 							name="adminstrative_area"
@@ -339,7 +381,13 @@
 						<!-- Governorate -->
 						<FormKit
 							:label="$translate('Governorate')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('Governorate')"
 							name="governorate"
@@ -351,7 +399,13 @@
 						<!-- National address -->
 						<FormKit
 							:label="$translate('National address')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('National address')"
 							name="national_address"
@@ -364,7 +418,13 @@
 						<!-- Job title -->
 						<FormKit
 							:label="$translate('Job title')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('Job title')"
 							name="job_title"
@@ -376,7 +436,13 @@
 						<!-- Address -->
 						<FormKit
 							:label="$translate('Address')"
-							outer-class="mb-3"
+							:classes="{
+								outer: 'mb-3',
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+							}"
 							type="text"
 							:placeholder="$translate('Address')"
 							name="address"

@@ -8,7 +8,7 @@
 	})
 
 	const { $i18n } = useNuxtApp()
-	const { genders, countries, cities, qualifications, howKnewUs, mobileCodes } = useSiteConfig()
+	const { genders, countries, cities, nationalities, qualifications, howKnewUs, mobileCodes } = useSiteConfig()
 
 	const subscriberData = ref({})
 
@@ -66,9 +66,10 @@
 							outer: 'mb-5',
 							wrapper: {
 								'formkit-wrapper': false,
+								'w-full': true,
 							},
 						}"
-					/>
+					></FormKit>
 
 					<!-- Name fields (Arabic) -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
@@ -77,48 +78,78 @@
 							type="text"
 							name="fname_ar"
 							id="fname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('fname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('fname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('sname')} (${$translate('In Arabic')})`"
 							type="text"
 							name="sname_ar"
 							id="sname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('sname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('sname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('tname')} (${$translate('In Arabic')})`"
 							type="text"
 							name="tname_ar"
 							id="tname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('tname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('tname')"
-						/>
+						></FormKit>
 						<FormKit
 							:label="`${$translate('lname')} (${$translate('In Arabic')})`"
 							type="text"
 							name="lname_ar"
 							id="lname_ar"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:placeholder="$translate('lname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('lname')"
-						/>
+						></FormKit>
 					</div>
 					<!-- Name fields -->
 
 					<!-- Name fields (English) -->
 					<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('fname')} (${$translate('In English')})`"
 							name="fname_en"
@@ -126,9 +157,15 @@
 							:placeholder="$translate('fname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('fname')"
-						/>
+						></FormKit>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('sname')} (${$translate('In English')})`"
 							name="sname_en"
@@ -136,9 +173,15 @@
 							:placeholder="$translate('sname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('sname')"
-						/>
+						></FormKit>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('tname')} (${$translate('In English')})`"
 							name="tname_en"
@@ -146,9 +189,15 @@
 							:placeholder="$translate('tname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('tname')"
-						/>
+						></FormKit>
 						<FormKit
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							type="text"
 							:label="`${$translate('lname')} (${$translate('In English')})`"
 							name="lname_en"
@@ -156,7 +205,7 @@
 							:placeholder="$translate('lname')"
 							validation="required:trim|length:3,50"
 							:validation-label="$translate('lname')"
-						/>
+						></FormKit>
 					</div>
 					<!-- Name fields -->
 
@@ -176,7 +225,7 @@
 							},
 							inner: 'm-3',
 						}"
-					/>
+					></FormKit>
 					<!-- Gender -->
 
 					<div
@@ -197,8 +246,14 @@
 							name="country"
 							:validation-label="$translate('Country')"
 							validation="required"
-							outer-class="mb-3"
-						/>
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
+						></FormKit>
 						<!-- Country -->
 
 						<!-- City -->
@@ -213,8 +268,14 @@
 							name="city"
 							:validation-label="$translate('City')"
 							validation="required"
-							outer-class="mb-3"
-						/>
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
+						></FormKit>
 						<!-- City -->
 
 						<!-- Nationality -->
@@ -224,12 +285,18 @@
 							:sections-schema="{
 								selectIcon: { $el: null },
 							}"
-							outer-class="mb-3"
-							:options="countries"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
+							:options="nationalities"
 							name="nationality"
 							:validation-label="$translate('Nationality')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- Nationality -->
 
 						<!-- Qualification -->
@@ -239,12 +306,18 @@
 							:sections-schema="{
 								selectIcon: { $el: null },
 							}"
-							outer-class="mb-3"
+							:classes="{
+								wrapper: {
+									'formkit-wrapper': false,
+									'w-full': true,
+								},
+								outer: 'mb-3',
+							}"
 							:options="qualifications"
 							name="qualification"
 							:validation-label="$translate('Qualification')"
 							validation="required"
-						/>
+						></FormKit>
 						<!-- Qualification -->
 					</div>
 
@@ -266,7 +339,7 @@
 						name="hearabout"
 						:validation-label="$translate('How do you know the authority?')"
 						validation="required"
-					/>
+					></FormKit>
 					<!-- HowKnew -->
 
 					<div class="row-of-two">
@@ -286,7 +359,7 @@
 							name="email"
 							:validation-label="$translate('Email')"
 							validation="required:trim|email"
-						/>
+						></FormKit>
 						<!-- Email -->
 
 						<!-- Mobile -->
@@ -335,7 +408,7 @@
 							name="password"
 							:validation-label="$translate('Password')"
 							validation="required:trim|length:6"
-						/>
+						></FormKit>
 						<!-- Password -->
 
 						<!-- Password Confirmation -->
@@ -354,7 +427,7 @@
 							name="password_confirm"
 							:validation-label="$translate('Password confirmation')"
 							validation="required:trim|confirm"
-						/>
+						></FormKit>
 						<!-- Password Confirmation -->
 					</div>
 
@@ -371,7 +444,7 @@
 								},
 								inner: 'mx-3',
 							}"
-						/>
+						></FormKit>
 					</div>
 
 					<div class="text-end">
